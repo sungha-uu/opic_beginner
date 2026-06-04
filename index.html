@@ -13,32 +13,62 @@
           <span class="brand-mark">IL</span>
           <div>
             <h1>OPIC Trainer</h1>
-            <p>유형별 스크립트 암기</p>
+            <p>서베이 묶음별 암기</p>
           </div>
         </div>
 
         <nav class="nav-list" aria-label="대시보드 섹션">
-          <a href="#scripts" class="nav-link active">맞춤 스크립트</a>
+          <a href="#survey" class="nav-link active">서베이</a>
+          <a href="#scripts" class="nav-link">맞춤 스크립트</a>
           <a href="#practice" class="nav-link">60초 연습</a>
           <a href="#tips" class="nav-link">Tip</a>
         </nav>
 
         <div class="sidebar-note">
           <span>프로젝트 목표</span>
-          <strong>질문은 다양하게, 답변은 익숙한 표현으로</strong>
+          <strong>서베이는 전략적으로, 답변은 한 패턴으로</strong>
         </div>
       </aside>
 
       <main class="main">
+        <section id="survey" class="section-band">
+          <div class="section-title">
+            <div>
+              <p class="eyebrow">Background Survey</p>
+              <h2>OPIC 서베이 선택</h2>
+            </div>
+            <div class="selection-counter">
+              <span>선택</span>
+              <strong id="selectedCount">0 / 12</strong>
+            </div>
+          </div>
+
+          <article class="panel survey-guide">
+            <p>실제 시험처럼 항목을 체크하세요. 12개 이상 선택하면 아래에 공통 답변으로 묶기 좋은 추천 스크립트 묶음이 열립니다.</p>
+            <div class="legend" id="legend"></div>
+          </article>
+
+          <div class="survey-grid" id="surveyGrid"></div>
+        </section>
+
         <section id="scripts" class="section-band">
           <div class="section-title">
             <div>
-              <p class="eyebrow">Script Library</p>
-              <h2>OPIC 서베이별 맞춤 스크립트</h2>
+              <p class="eyebrow">Survey Bundle Scripts</p>
+              <h2>서베이별 맞춤 스크립트</h2>
             </div>
-            <div class="segmented" id="typeTabs" role="tablist" aria-label="OPIC 유형"></div>
+            <button class="secondary-button" id="reshuffleQuestions" type="button">질문 다시 섞기</button>
           </div>
-          <div class="script-board single" id="scriptBoard"></div>
+
+          <div class="bundle-layout">
+            <aside class="panel bundle-list-panel">
+              <h3>추천 묶음</h3>
+              <p class="muted" id="bundleHint">12개 이상 선택하면 추천 묶음이 표시됩니다.</p>
+              <div class="bundle-list" id="bundleList"></div>
+            </aside>
+
+            <div class="script-board single" id="scriptBoard"></div>
+          </div>
         </section>
 
         <section id="practice" class="section-band">
@@ -55,14 +85,14 @@
               <span id="practiceState">대기</span>
               <strong id="timer">00:00</strong>
             </div>
-            <p class="question" id="practiceQuestion">60초 연습 버튼을 누르면 실제 OPIC 유형과 질문이 랜덤으로 나옵니다.</p>
+            <p class="question" id="practiceQuestion">서베이 12개 이상 선택 후 60초 연습을 누르면 선택한 묶음에서 질문이 랜덤으로 나옵니다.</p>
             <p class="muted" id="practiceGuide">연습 중에는 질문만 보입니다. 종료하거나 60초가 지나면 유형, 해석, 좋은 답변 예시가 열립니다.</p>
           </article>
 
           <section class="result-panel hidden" id="practiceResult" aria-live="polite">
             <div class="result-grid">
               <article class="panel">
-                <p class="eyebrow">Question Type</p>
+                <p class="eyebrow">Question Pattern</p>
                 <h3 id="resultType"></h3>
                 <p id="resultQuestionKo" class="translation"></p>
               </article>
@@ -89,24 +119,21 @@
               <h3>IL 준비 원칙</h3>
               <ol class="tip-list">
                 <li>IL 목표는 난이도 3을 우선 선택한다.</li>
+                <li>서베이는 12개 이상 선택하되, 답변을 돌려쓸 수 있는 묶음으로 고른다.</li>
                 <li>기본 문장으로 답변하고, 가능하면 `because`로 이유 1개를 붙인다.</li>
                 <li>문법보다 끊기지 않고 끝까지 말하는 흐름을 더 중요하게 연습한다.</li>
-                <li>답변은 `기본 문장 + 이유 1개` 구조로 외운다.</li>
+                <li>공원/걷기/음악처럼 같은 경험으로 묶이는 항목을 우선 선택한다.</li>
                 <li>롤플레이는 상황 설명, 간단한 요청, 변경 질문을 30~40초로 연습한다.</li>
-                <li>서베이는 실제 경험이 있고 같은 표현으로 돌려 말할 수 있는 항목을 고른다.</li>
-                <li>추천 묶음은 공원/걷기/음악, 카페/쇼핑, 게임/음악, 국내여행/교통이다.</li>
               </ol>
             </article>
 
             <article class="panel">
               <h3>서베이와 문제 패턴 구분</h3>
               <div class="type-table" aria-label="IL 유형 요약">
-                <div><strong>서베이 주제</strong><span>공원, 카페, 게임, 여행, 직장처럼 질문 소재가 되는 항목</span></div>
+                <div><strong>서베이 항목</strong><span>공원, 게임, 여행처럼 질문 소재가 되는 선택지</span></div>
+                <div><strong>서베이 묶음</strong><span>공원 + 걷기 + 음악처럼 한 답변으로 처리할 수 있는 조합</span></div>
                 <div><strong>문제 패턴</strong><span>묘사, 루틴, 과거경험, 비교, 롤플레이처럼 답변 방식</span></div>
-                <div><strong>추천 선택</strong><span>공원/걷기/음악처럼 한 답변으로 묶이는 항목</span></div>
-                <div><strong>피할 선택</strong><span>악기, 캠핑, 해외여행처럼 단어가 어려운 항목</span></div>
-                <div><strong>콤보 대비</strong><span>한 주제에서 묘사 → 루틴 → 과거경험으로 확장</span></div>
-                <div><strong>위기탈출</strong><span>모르는 질문은 아는 경험으로 연결</span></div>
+                <div><strong>공통 답변</strong><span>같은 표현을 조금씩 바꿔 여러 질문에 사용</span></div>
               </div>
             </article>
           </div>
