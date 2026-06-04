@@ -19,7 +19,7 @@ const questionTypes = [
       ["Tell me three things about yourself.", "자신에 대해 세 가지를 말해주세요."]
     ],
     answer: [
-      ["Hello, my name is Sungha Yoo.", "헬로, 마이 네임 이즈 성하 유."],
+      ["Hello, my name is OOO.", "헬로, 마이 네임 이즈 오오오."],
       ["I am 40 years old.", "아이 앰 포티 이어즈 올드."],
       ["I work for Samsung Electronics.", "아이 워크 포 삼성 일렉트로닉스."],
       ["I have worked there for 10 years.", "아이 해브 워크트 데어 포 텐 이어즈."],
