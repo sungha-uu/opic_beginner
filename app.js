@@ -22,6 +22,7 @@ const bundles = [
   {
     id: "park",
     label: "공원/운동",
+    patternNo: 1,
     colorGroup: "park",
     surveyItems: ["공원 가기", "걷기", "조깅", "자전거"],
     goal: "공원에 간다, 걷는다, 음악을 듣는다, 편안하다는 한 패턴으로 처리한다.",
@@ -46,6 +47,7 @@ const bundles = [
   {
     id: "home",
     label: "집/휴식",
+    patternNo: 2,
     colorGroup: "home",
     surveyItems: ["집에서 보내는 휴가", "TV 시청", "게임하기"],
     goal: "집에서 쉰다, 게임/영화/음악을 한다, 스트레스가 풀린다는 패턴으로 처리한다.",
@@ -73,6 +75,7 @@ const bundles = [
   {
     id: "game",
     label: "음악/영상",
+    patternNo: 3,
     colorGroup: "game",
     surveyItems: ["음악 감상하기", "영화보기", "콘서트 보기"],
     goal: "듣고 본다, 재미있다, 기분이 좋아진다는 쉬운 감상 패턴으로 처리한다.",
@@ -99,6 +102,7 @@ const bundles = [
   {
     id: "cafe",
     label: "카페/쇼핑",
+    patternNo: 4,
     colorGroup: "cafe",
     surveyItems: ["카페 가기", "쇼핑하기", "술집/바에 가기"],
     goal: "집 근처에 간다, 친구 또는 혼자 간다, 음료를 마신다는 패턴으로 처리한다.",
@@ -125,9 +129,10 @@ const bundles = [
   {
     id: "travel",
     label: "여행",
+    patternNo: 5,
     colorGroup: "travel",
     surveyItems: ["국내 여행", "해변 가기", "사진 촬영하기"],
-    goal: "부산에 갔다, 바다를 봤다, 사진을 찍었다는 짧은 과거 경험으로 처리한다.",
+    goal: "부산에 갔다, 바다를 봤다, 늦잠 문제도 있었다는 짧은 과거 경험으로 처리한다.",
     questions: [
       ["묘사", "Tell me about a place you visited.", "방문했던 장소에 대해 말해주세요."],
       ["묘사", "Describe a beach you went to.", "가봤던 해변을 묘사해주세요."],
@@ -144,13 +149,18 @@ const bundles = [
       ["I went there with my family.", "아이 웬트 데어 위드 마이 패밀리."],
       ["We walked near the beach.", "위 워크트 니어 더 비치."],
       ["The place was quiet and clean.", "더 플레이스 워즈 콰이엇 앤 클린."],
+      ["But there was a small problem.", "벗 데어 워즈 어 스몰 프라블럼."],
+      ["I overslept in the morning.", "아이 오버슬렙트 인 더 모닝."],
+      ["So we were a little late.", "쏘 위 워 어 리틀 레이트."],
       ["I took some pictures there.", "아이 툭 섬 픽처스 데어."],
+      ["But it was okay.", "벗 잇 워즈 오케이."],
       ["It was fun and relaxing.", "잇 워즈 펀 앤 릴랙싱."]
     ]
   },
   {
     id: "surprise",
     label: "돌발 유형",
+    patternNo: 6,
     colorGroup: "surprise",
     surveyItems: ["직장/학교 돌발", "기술/전화 문제", "예약/변경 롤플레이", "모르는 질문"],
     goal: "모르는 질문도 당황하지 않고 짧게 인정한 뒤, 아는 경험으로 연결한다.",
@@ -180,6 +190,7 @@ const bundles = [
   {
     id: "escape",
     label: "위기탈출",
+    patternNo: 7,
     colorGroup: "escape",
     surveyItems: ["질문 못 들었을 때", "질문을 이해 못 했을 때", "답변이 기억 안 날 때"],
     goal: "침묵을 피하고, 짧게 시간을 벌고, 아는 쉬운 경험으로 연결한다.",
@@ -228,6 +239,28 @@ function getActiveBundle() {
   return bundles.find((bundle) => bundle.id === activeBundleId) || bundles[0];
 }
 
+function speakText(text) {
+  const synth = window.speechSynthesis || window.webkitSpeechSynthesis;
+  if (!synth) return;
+  synth.cancel();
+  const utterance = new SpeechSynthesisUtterance(text);
+  utterance.lang = "en-US";
+  utterance.rate = 0.82;
+  synth.speak(utterance);
+}
+
+function createTtsButton(text, label) {
+  const button = el("button", "tts-button", "▶");
+  button.type = "button";
+  button.setAttribute("aria-label", label);
+  button.title = label;
+  button.addEventListener("click", (event) => {
+    event.stopPropagation();
+    speakText(text);
+  });
+  return button;
+}
+
 function createLine([english, sound]) {
   const row = el("div", "script-line");
   row.tabIndex = 0;
@@ -235,8 +268,24 @@ function createLine([english, sound]) {
   row.addEventListener("touchend", () => row.classList.remove("show-sound"));
   row.addEventListener("touchcancel", () => row.classList.remove("show-sound"));
   row.addEventListener("mouseleave", () => row.classList.remove("show-sound"));
-  row.append(el("strong", null, english), el("span", "pronunciation", sound));
+  const top = el("div", "line-top");
+  top.append(el("strong", null, english), createTtsButton(english, "영어 답변 듣기"));
+  row.append(top, el("span", "pronunciation", sound));
   return row;
+}
+
+function createQuestionRow([pattern, question, ko]) {
+  const row = el("p", "mini-question");
+  const questionTop = el("div", "question-top");
+  questionTop.append(el("strong", null, question), createTtsButton(question, "영어 질문 듣기"));
+  row.append(el("em", null, pattern), questionTop, el("span", null, ko));
+  return row;
+}
+
+function createPatternTitle(bundle) {
+  const title = el("div", "pattern-title");
+  title.append(el("span", null, `답변 패턴 #${bundle.patternNo}`), el("strong", null, bundle.label));
+  return title;
 }
 
 function renderLegend() {
@@ -302,15 +351,11 @@ function renderScript() {
   const questionList = el("div", "question-list");
   shuffle(bundle.questions)
     .slice(0, bundle.id === "surprise" ? 3 : 5)
-    .forEach(([pattern, question, ko]) => {
-      const row = el("p", "mini-question");
-      row.append(el("em", null, pattern), el("strong", null, question), el("span", null, ko));
-      questionList.append(row);
-    });
+    .forEach((question) => questionList.append(createQuestionRow(question)));
 
   const lines = el("div", "script-lines");
   bundle.answer.forEach((line) => lines.append(createLine(line)));
-  card.append(surveyList, questionList, lines);
+  card.append(surveyList, questionList, createPatternTitle(bundle), lines);
   wrap.append(card);
 }
 
@@ -363,6 +408,7 @@ function finishPractice() {
   document.querySelector("#practiceGuide").textContent = "답변을 보면서 같은 표현을 다시 소리 내서 읽으세요.";
   document.querySelector("#resultType").textContent = `${bundle.label} - ${question[0]}`;
   document.querySelector("#resultQuestionKo").textContent = question[2];
+  document.querySelector("#resultAnswerTitle").textContent = `답변 패턴 #${bundle.patternNo}`;
 
   const answer = document.querySelector("#resultAnswer");
   answer.innerHTML = "";

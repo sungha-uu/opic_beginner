@@ -572,13 +572,71 @@ button {
   font-weight: 800;
 }
 
-.mini-question strong {
+.mini-question strong,
+.line-top strong {
   font-size: 15px;
 }
 
 .mini-question span {
   color: var(--muted);
   font-size: 13px;
+}
+
+.question-top,
+.line-top {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.question-top {
+  justify-content: space-between;
+}
+
+.line-top {
+  justify-content: flex-start;
+}
+
+.tts-button {
+  flex: 0 0 auto;
+  display: inline-grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: #ffffff;
+  color: var(--blue);
+  font-size: 11px;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.tts-button:hover {
+  border-color: var(--blue);
+  background: var(--blue-soft);
+}
+
+.pattern-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 10px 0 2px;
+  border-top: 1px solid var(--line);
+  padding-top: 14px;
+}
+
+.pattern-title span {
+  border-radius: 999px;
+  background: var(--blue-soft);
+  color: var(--blue);
+  padding: 4px 9px;
+  font-size: 13px;
+  font-weight: 900;
+}
+
+.pattern-title strong {
+  font-size: 16px;
 }
 
 .script-lines {
@@ -593,7 +651,6 @@ button {
 }
 
 .script-line strong {
-  display: block;
   font-size: 16px;
   cursor: default;
 }
