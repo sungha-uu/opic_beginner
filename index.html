@@ -18,7 +18,7 @@
         </div>
 
         <nav class="nav-list" aria-label="대시보드 섹션">
-          <a href="#survey" class="nav-link active">서베이</a>
+          <a href="#survey" class="nav-link active">추천 조합</a>
           <a href="#scripts" class="nav-link">맞춤 스크립트</a>
           <a href="#practice" class="nav-link">60초 연습</a>
           <a href="#tips" class="nav-link">Tip</a>
@@ -34,17 +34,13 @@
         <section id="survey" class="section-band">
           <div class="section-title">
             <div>
-              <p class="eyebrow">Background Survey</p>
-              <h2>OPIC 서베이 선택</h2>
-            </div>
-            <div class="selection-counter">
-              <span>선택</span>
-              <strong id="selectedCount">0 / 12</strong>
+              <p class="eyebrow">Recommended Survey Combos</p>
+              <h2>내가 공부할 서베이 조합</h2>
             </div>
           </div>
 
           <article class="panel survey-guide">
-            <p>실제 시험처럼 항목을 체크하세요. 12개 이상 선택하면 아래에 공통 답변으로 묶기 좋은 추천 스크립트 묶음이 열립니다.</p>
+            <p>체크박스 대신 실제로 외울 조합만 남겼습니다. 각 조합을 누르면 공통 표현으로 돌려쓸 수 있는 예상 질문과 답변 패턴이 열립니다.</p>
             <div class="legend" id="legend"></div>
           </article>
 
@@ -55,7 +51,7 @@
           <div class="section-title">
             <div>
               <p class="eyebrow">Survey Bundle Scripts</p>
-              <h2>서베이별 맞춤 스크립트</h2>
+              <h2>조합별 맞춤 스크립트</h2>
             </div>
             <button class="secondary-button" id="reshuffleQuestions" type="button">질문 다시 섞기</button>
           </div>
@@ -63,7 +59,7 @@
           <div class="bundle-layout">
             <aside class="panel bundle-list-panel">
               <h3>추천 묶음</h3>
-              <p class="muted" id="bundleHint">12개 이상 선택하면 추천 묶음이 표시됩니다.</p>
+              <p class="muted" id="bundleHint">조합을 선택하면 질문이 랜덤으로 바뀝니다.</p>
               <div class="bundle-list" id="bundleList"></div>
             </aside>
 
@@ -85,7 +81,7 @@
               <span id="practiceState">대기</span>
               <strong id="timer">00:00</strong>
             </div>
-            <p class="question" id="practiceQuestion">서베이 12개 이상 선택 후 60초 연습을 누르면 선택한 묶음에서 질문이 랜덤으로 나옵니다.</p>
+            <p class="question" id="practiceQuestion">60초 연습을 누르면 5개 추천 조합, 돌발 유형, 위기탈출 중 하나가 실전처럼 랜덤으로 나옵니다.</p>
             <p class="muted" id="practiceGuide">연습 중에는 질문만 보입니다. 종료하거나 60초가 지나면 유형, 해석, 좋은 답변 예시가 열립니다.</p>
           </article>
 
@@ -119,11 +115,11 @@
               <h3>IL 준비 원칙</h3>
               <ol class="tip-list">
                 <li>IL 목표는 난이도 3을 우선 선택한다.</li>
-                <li>서베이는 12개 이상 선택하되, 답변을 돌려쓸 수 있는 묶음으로 고른다.</li>
+                <li>서베이는 실제 시험에서 12개 이상 고르되, 공부는 쉬운 조합 5개를 중심으로 한다.</li>
                 <li>기본 문장으로 답변하고, 가능하면 `because`로 이유 1개를 붙인다.</li>
                 <li>문법보다 끊기지 않고 끝까지 말하는 흐름을 더 중요하게 연습한다.</li>
-                <li>공원/걷기/음악처럼 같은 경험으로 묶이는 항목을 우선 선택한다.</li>
-                <li>롤플레이는 상황 설명, 간단한 요청, 변경 질문을 30~40초로 연습한다.</li>
+                <li>공원/걷기/음악처럼 같은 경험으로 묶이는 항목을 우선 외운다.</li>
+                <li>돌발과 위기탈출은 침묵을 피하는 용도로 매일 짧게 연습한다.</li>
               </ol>
             </article>
 

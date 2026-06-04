@@ -370,6 +370,33 @@ button {
   padding: 16px;
 }
 
+.survey-combo {
+  display: grid;
+  gap: 10px;
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  padding: 16px;
+  text-align: left;
+}
+
+.survey-combo strong {
+  display: block;
+  font-size: 20px;
+}
+
+.survey-combo p {
+  margin: 0;
+  color: inherit;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.survey-combo.active {
+  outline: 3px solid currentColor;
+}
+
 .survey-category-header {
   display: flex;
   align-items: center;
@@ -393,6 +420,15 @@ button {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
+}
+
+.survey-items.compact span {
+  border: 1px solid rgba(31, 41, 51, 0.12);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.72);
+  padding: 5px 9px;
+  font-size: 13px;
+  font-weight: 800;
 }
 
 .survey-item {
