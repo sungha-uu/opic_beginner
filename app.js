@@ -604,7 +604,257 @@ questionTypes.forEach((type) => {
   }
 });
 
-let activeType = questionTypes[0].id;
+const surveyTopics = [
+  {
+    id: "profileHome",
+    label: "자기소개/거주",
+    title: "자기소개 + 집/동네",
+    goal: "자기소개, 사는 곳, 집/동네 질문을 하나의 기본 스크립트로 처리한다.",
+    surveyItems: ["가족과 아파트 거주", "직장 있음", "대구 거주"],
+    questions: [
+      ["자기소개", "Tell me something about yourself.", "자기소개를 해주세요."],
+      ["자기소개", "Please introduce yourself.", "자신을 소개해주세요."],
+      ["묘사", "Please describe your home.", "집을 묘사해주세요."],
+      ["묘사", "Tell me about your neighborhood.", "동네에 대해 말해주세요."],
+      ["묘사", "What does your apartment look like?", "아파트가 어떻게 생겼나요?"],
+      ["루틴", "What do you usually do at home?", "집에서 보통 무엇을 하나요?"],
+      ["루틴", "Tell me about your daily routine at home.", "집에서의 일상 루틴을 말해주세요."],
+      ["과거경험", "Tell me about a memorable experience at home.", "집에서의 기억에 남는 경험을 말해주세요."],
+      ["과거경험", "Tell me about the last time you spent time with your family.", "최근 가족과 시간을 보낸 때를 말해주세요."],
+      ["비교", "Compare your home now and your old home.", "지금 집과 예전 집을 비교해주세요."]
+    ],
+    answer: [
+      ["Hello, my name is OOO.", "헬로, 마이 네임 이즈 OOO."],
+      ["I am 40 years old.", "아이 앰 포티 이어즈 올드."],
+      ["I work for Samsung Electronics.", "아이 워크 포 삼성 일렉트로닉스."],
+      ["I live in Daegu, Korea.", "아이 리브 인 대구, 코리아."],
+      ["There are four people in my family.", "데어 아 포 피플 인 마이 패밀리."],
+      ["My home is small, quiet, and comfortable.", "마이 홈 이즈 스몰, 콰이엇, 앤 컴퍼터블."],
+      ["These days, I study English after work.", "디즈 데이즈, 아이 스터디 잉글리시 애프터 워크."]
+    ]
+  },
+  {
+    id: "workSurvey",
+    label: "직장",
+    title: "직장/업무",
+    goal: "직장, 업무, 퇴근 후 루틴을 같은 표현으로 연결한다.",
+    surveyItems: ["사업/회사", "직장 있음", "근무 경험 많음"],
+    questions: [
+      ["묘사", "Tell me about your company.", "회사에 대해 말해주세요."],
+      ["묘사", "Describe your workplace.", "직장을 묘사해주세요."],
+      ["루틴", "What do you usually do at work?", "직장에서 보통 무엇을 하나요?"],
+      ["루틴", "Tell me about a typical workday.", "보통 근무일에 대해 말해주세요."],
+      ["과거경험", "Tell me about a busy day at work.", "직장에서 바빴던 하루를 말해주세요."],
+      ["과거경험", "Tell me about a problem you had at work.", "직장에서 겪은 문제를 말해주세요."],
+      ["비교", "How has your work changed over time?", "업무가 시간이 지나며 어떻게 변했나요?"],
+      ["의견", "What do you like about your job?", "직업에서 어떤 점을 좋아하나요?"],
+      ["돌발", "What is difficult about your job?", "직업에서 어려운 점은 무엇인가요?"],
+      ["루틴", "What do you do after work?", "퇴근 후 무엇을 하나요?"]
+    ],
+    answer: [
+      ["I work for Samsung Electronics.", "아이 워크 포 삼성 일렉트로닉스."],
+      ["I have worked there for 10 years.", "아이 해브 워크트 데어 포 텐 이어즈."],
+      ["I usually work with my team.", "아이 유주얼리 워크 위드 마이 팀."],
+      ["Sometimes I have a busy day.", "섬타임즈 아이 해브 어 비지 데이."],
+      ["After work, I study English.", "애프터 워크, 아이 스터디 잉글리시."],
+      ["It is hard, but it is good for me.", "잇 이즈 하드, 벗 잇 이즈 굿 포 미."],
+      ["It helps me improve myself.", "잇 헬프스 미 임프루브 마이셀프."]
+    ]
+  },
+  {
+    id: "parkWalking",
+    label: "공원/걷기",
+    title: "공원 + 걷기 + 음악",
+    goal: "공원, 걷기, 음악 감상을 한 장소와 루틴으로 묶어 공용 답변을 만든다.",
+    surveyItems: ["공원 가기", "걷기", "음악 감상하기"],
+    questions: [
+      ["묘사", "Describe a park near your home.", "집 근처 공원을 묘사해주세요."],
+      ["묘사", "Tell me about a quiet place you like.", "좋아하는 조용한 장소를 말해주세요."],
+      ["루틴", "What do you usually do in your free time?", "여가 시간에 보통 무엇을 하나요?"],
+      ["루틴", "How often do you go to a park?", "얼마나 자주 공원에 가나요?"],
+      ["루틴", "What do you usually do after work?", "퇴근 후 보통 무엇을 하나요?"],
+      ["과거경험", "Tell me about the last time you went to a park.", "마지막으로 공원에 갔던 때를 말해주세요."],
+      ["과거경험", "Tell me about a recent walk.", "최근 산책에 대해 말해주세요."],
+      ["비교", "Compare your free time now and in the past.", "현재와 과거의 여가 시간을 비교해주세요."],
+      ["의견", "Why do you like walking in the park?", "왜 공원 걷기를 좋아하나요?"],
+      ["돌발", "Tell me about a problem you had at a park.", "공원에서 겪은 문제를 말해주세요."]
+    ],
+    answer: [
+      ["Whenever I have free time, I go to a park.", "웬에버 아이 해브 프리 타임, 아이 고 투 어 파크."],
+      ["Walking in the park is one of my hobbies.", "워킹 인 더 파크 이즈 원 어브 마이 하비즈."],
+      ["I usually go there after work.", "아이 유주얼리 고 데어 애프터 워크."],
+      ["Sometimes I listen to music there.", "섬타임즈 아이 리슨 투 뮤직 데어."],
+      ["The park is quiet and clean.", "더 파크 이즈 콰이엇 앤 클린."],
+      ["It is easy and comfortable.", "잇 이즈 이지 앤 컴퍼터블."],
+      ["It helps me relax.", "잇 헬프스 미 릴랙스."]
+    ]
+  },
+  {
+    id: "cafeShopping",
+    label: "카페/쇼핑",
+    title: "카페 + 쇼핑 + 음식",
+    goal: "카페와 쇼핑을 집 근처 활동으로 묶어 답변한다.",
+    surveyItems: ["카페/커피전문점 가기", "쇼핑하기", "외식/음식"],
+    questions: [
+      ["묘사", "Tell me about a cafe you often go to.", "자주 가는 카페에 대해 말해주세요."],
+      ["묘사", "Describe your favorite cafe.", "좋아하는 카페를 묘사해주세요."],
+      ["루틴", "What do you usually order at a cafe?", "카페에서 보통 무엇을 주문하나요?"],
+      ["루틴", "Where do you usually go shopping?", "보통 어디로 쇼핑하러 가나요?"],
+      ["과거경험", "Tell me about the last time you went shopping.", "마지막으로 쇼핑했던 때를 말해주세요."],
+      ["과거경험", "Tell me about the last time you ate out.", "마지막으로 외식했던 때를 말해주세요."],
+      ["비교", "Do you prefer online shopping or shopping at a store?", "온라인 쇼핑과 매장 쇼핑 중 무엇을 선호하나요?"],
+      ["비교", "Compare eating at home and eating out.", "집에서 먹는 것과 외식하는 것을 비교해주세요."],
+      ["의견", "Why do people like cafes?", "사람들은 왜 카페를 좋아하나요?"],
+      ["돌발", "Tell me about a problem you had while shopping.", "쇼핑 중 겪은 문제를 말해주세요."]
+    ],
+    answer: [
+      ["I often go to a cafe near my home.", "아이 오프튼 고 투 어 카페 니어 마이 홈."],
+      ["It is small, quiet, and comfortable.", "잇 이즈 스몰, 콰이엇, 앤 컴퍼터블."],
+      ["I usually drink iced coffee there.", "아이 유주얼리 드링크 아이스드 커피 데어."],
+      ["Sometimes I study English at the cafe.", "섬타임즈 아이 스터디 잉글리시 앳 더 카페."],
+      ["I also go shopping near my home.", "아이 올쏘 고 쇼핑 니어 마이 홈."],
+      ["It is easy and relaxing.", "잇 이즈 이지 앤 릴랙싱."],
+      ["So I like going there.", "쏘 아이 라이크 고잉 데어."]
+    ]
+  },
+  {
+    id: "gameMusic",
+    label: "게임/음악",
+    title: "게임 + 음악",
+    goal: "집에서 하는 취미로 묶어 짧게 반복한다.",
+    surveyItems: ["게임 하기", "음악 감상하기", "TV/영상 보기"],
+    questions: [
+      ["묘사", "What kind of games do you like?", "어떤 종류의 게임을 좋아하나요?"],
+      ["루틴", "When do you usually play games?", "보통 언제 게임을 하나요?"],
+      ["루틴", "Where do you usually play games?", "보통 어디에서 게임하나요?"],
+      ["루틴", "What kind of music do you like?", "어떤 음악을 좋아하나요?"],
+      ["과거경험", "Tell me about the last time you played games.", "마지막으로 게임했던 때를 말해주세요."],
+      ["과거경험", "Tell me about a memorable gaming experience.", "기억에 남는 게임 경험을 말해주세요."],
+      ["비교", "How has your hobby changed?", "취미가 어떻게 변했나요?"],
+      ["비교", "Compare your hobbies now and in the past.", "현재와 과거의 취미를 비교해주세요."],
+      ["의견", "Why do you like playing games?", "왜 게임을 좋아하나요?"],
+      ["의견", "Why is your hobby important to you?", "취미가 왜 중요한가요?"]
+    ],
+    answer: [
+      ["Playing games is one of my hobbies.", "플레이잉 게임즈 이즈 원 어브 마이 하비즈."],
+      ["I usually play games at home.", "아이 유주얼리 플레이 게임즈 앳 홈."],
+      ["I play games after work.", "아이 플레이 게임즈 애프터 워크."],
+      ["Sometimes I listen to music too.", "섬타임즈 아이 리슨 투 뮤직 투."],
+      ["It is fun and exciting.", "잇 이즈 펀 앤 익사이팅."],
+      ["It helps me relax.", "잇 헬프스 미 릴랙스."],
+      ["So I like this hobby.", "쏘 아이 라이크 디스 하비."]
+    ]
+  },
+  {
+    id: "travelTransport",
+    label: "여행/교통",
+    title: "국내여행 + 대중교통",
+    goal: "여행과 교통을 짧은 경험 이야기로 처리한다.",
+    surveyItems: ["국내 여행", "집에서 보내는 휴가", "대중교통/버스"],
+    questions: [
+      ["묘사", "Tell me about public transportation in your city.", "도시의 대중교통에 대해 말해주세요."],
+      ["루틴", "How do you usually get around your city?", "도시에서 보통 어떻게 이동하나요?"],
+      ["루틴", "Where do you usually go on vacation?", "휴가 때 보통 어디에 가나요?"],
+      ["과거경험", "Tell me about a trip you took.", "다녀온 여행에 대해 말해주세요."],
+      ["과거경험", "Tell me about a memorable trip.", "기억에 남는 여행을 말해주세요."],
+      ["과거경험", "Tell me about a time you took a bus or subway.", "버스나 지하철을 탔던 때를 말해주세요."],
+      ["비교", "Compare traveling now and in the past.", "현재와 과거의 여행을 비교해주세요."],
+      ["의견", "Why do people like traveling?", "사람들은 왜 여행을 좋아하나요?"],
+      ["돌발", "Have you ever had a problem while traveling?", "여행 중 문제가 있었던 적이 있나요?"],
+      ["돌발", "Tell me about a time when you missed a bus.", "버스를 놓쳤던 때를 말해주세요."]
+    ],
+    answer: [
+      ["Last year, I went to Busan.", "래스트 이어, 아이 웬트 투 부산."],
+      ["I went there with my family.", "아이 웬트 데어 위드 마이 패밀리."],
+      ["We ate delicious food.", "위 에잇 딜리셔스 푸드."],
+      ["We walked near the beach.", "위 워크트 니어 더 비치."],
+      ["The place was quiet and clean.", "더 플레이스 워즈 콰이엇 앤 클린."],
+      ["It was fun and relaxing.", "잇 워즈 펀 앤 릴랙싱."],
+      ["I had a nice time.", "아이 해드 어 나이스 타임."]
+    ]
+  },
+  {
+    id: "techHome",
+    label: "기술/집안일",
+    title: "휴대폰 + 인터넷 + 집안일",
+    goal: "돌발로 자주 나오는 생활 문제를 쉬운 패턴으로 처리한다.",
+    surveyItems: ["SNS/문자", "휴대폰 게임", "집안일/청소"],
+    questions: [
+      ["묘사", "Tell me about your phone.", "휴대폰에 대해 말해주세요."],
+      ["루틴", "How do you usually use your phone?", "휴대폰을 보통 어떻게 사용하나요?"],
+      ["루틴", "Tell me about household chores you do.", "하는 집안일에 대해 말해주세요."],
+      ["과거경험", "Tell me about the last time you cleaned your room.", "마지막으로 방 청소했던 때를 말해주세요."],
+      ["과거경험", "Have you ever had a problem with your phone?", "휴대폰에 문제가 있었던 적이 있나요?"],
+      ["비교", "Compare doing housework now and in the past.", "지금과 과거의 집안일을 비교해주세요."],
+      ["의견", "What technology helps your daily life?", "어떤 기술이 일상생활에 도움이 되나요?"],
+      ["돌발", "What do you do when the internet does not work?", "인터넷이 안 될 때 무엇을 하나요?"],
+      ["돌발", "Tell me about a problem you had while doing housework.", "집안일 중 겪은 문제를 말해주세요."],
+      ["돌발", "Tell me about a time your plan changed because of technology.", "기술 문제 때문에 계획이 바뀐 때를 말해주세요."]
+    ],
+    answer: [
+      ["I usually use my phone every day.", "아이 유주얼리 유즈 마이 폰 에브리 데이."],
+      ["I use it after work.", "아이 유즈 잇 애프터 워크."],
+      ["Sometimes I study English on my phone.", "섬타임즈 아이 스터디 잉글리시 온 마이 폰."],
+      ["It is very useful.", "잇 이즈 베리 유스풀."],
+      ["But sometimes there is a problem.", "벗 섬타임즈 데어 이즈 어 프라블럼."],
+      ["When there is a problem, I ask for help.", "웬 데어 이즈 어 프라블럼, 아이 애스크 포 헬프."],
+      ["It helps my daily life.", "잇 헬프스 마이 데일리 라이프."]
+    ]
+  },
+  {
+    id: "rolePlay",
+    label: "롤플레이 공통",
+    title: "질문/예약/문제해결",
+    goal: "서베이와 무관하게 나오는 롤플레이를 공통 질문 표현으로 대비한다.",
+    surveyItems: ["예약", "약속 변경", "문제 해결"],
+    questions: [
+      ["롤플레이 질문", "Call a restaurant and ask about the menu and time.", "식당에 전화해서 메뉴와 시간을 물어보세요."],
+      ["롤플레이 질문", "Call a cafe and ask about seats and opening hours.", "카페에 전화해서 좌석과 영업시간을 물어보세요."],
+      ["롤플레이 질문", "Ask your friend about a weekend plan.", "친구에게 주말 계획에 대해 물어보세요."],
+      ["롤플레이 질문", "Ask a clerk about a product you want to buy.", "직원에게 사고 싶은 제품에 대해 물어보세요."],
+      ["롤플레이 문제", "You cannot go to a reservation. Explain and reschedule.", "예약에 갈 수 없습니다. 설명하고 일정을 바꾸세요."],
+      ["롤플레이 문제", "You lost your phone. Call the cafe and ask for help.", "휴대폰을 잃어버렸습니다. 카페에 전화해서 도움을 요청하세요."],
+      ["롤플레이 문제", "You received a broken product. Explain and ask for a new one.", "고장 난 제품을 받았습니다. 설명하고 새 제품을 요청하세요."],
+      ["롤플레이 문제", "You missed a bus. Call your friend and explain.", "버스를 놓쳤습니다. 친구에게 전화해서 설명하세요."],
+      ["롤플레이 문제", "You are sick and cannot meet your friend. Explain and apologize.", "아파서 친구를 만날 수 없습니다. 설명하고 사과하세요."],
+      ["롤플레이 질문", "Ask someone how to get to a place.", "어떤 장소에 어떻게 가는지 물어보세요."]
+    ],
+    answer: [
+      ["Hello, I have a question.", "헬로, 아이 해브 어 퀘스천."],
+      ["There is a problem.", "데어 이즈 어 프라블럼."],
+      ["I cannot go there today.", "아이 캐낫 고 데어 투데이."],
+      ["Can I change the time?", "캔 아이 체인지 더 타임?"],
+      ["Can you help me?", "캔 유 헬프 미?"],
+      ["Is that okay?", "이즈 댓 오케이?"],
+      ["Thank you for your help.", "땡큐 포 유어 헬프."]
+    ]
+  },
+  {
+    id: "escapeSurvey",
+    label: "위기탈출",
+    title: "아무 생각 안 날 때",
+    goal: "질문을 못 알아들어도 침묵하지 않고 아는 경험으로 연결한다.",
+    surveyItems: ["모든 주제 공통", "침묵 방지", "아는 경험 연결"],
+    questions: [
+      ["위기탈출", "Use this when you do not understand the question.", "질문을 이해하지 못했을 때 사용하세요."],
+      ["위기탈출", "Use this when you cannot think of an answer.", "답변이 생각나지 않을 때 사용하세요."],
+      ["위기탈출", "Use this when the topic is too difficult.", "주제가 너무 어려울 때 사용하세요."],
+      ["위기탈출", "Use this when the question is too long.", "질문이 너무 길 때 사용하세요."],
+      ["위기탈출", "Use this when you forget your script.", "스크립트를 잊었을 때 사용하세요."]
+    ],
+    answer: [
+      ["That is an interesting question.", "댓 이즈 언 인터레스팅 퀘스천."],
+      ["I am not sure, but I will try.", "아이 앰 낫 슈어, 벗 아이 윌 트라이."],
+      ["I do not know much about it.", "아이 두 낫 노우 머치 어바웃 잇."],
+      ["But I can talk about my experience.", "벗 아이 캔 토크 어바웃 마이 익스피리언스."],
+      ["These days, I study English after work.", "디즈 데이즈, 아이 스터디 잉글리시 애프터 워크."],
+      ["Whenever I have free time, I go to a park.", "웬에버 아이 해브 프리 타임, 아이 고 투 어 파크."],
+      ["It helps me relax.", "잇 헬프스 미 릴랙스."]
+    ]
+  }
+];
+
+let activeType = surveyTopics[0].id;
 let currentPractice = null;
 let timerId = null;
 let remainingSeconds = 0;
@@ -632,14 +882,14 @@ function pickRandom(array) {
 }
 
 function getActiveType() {
-  return questionTypes.find((type) => type.id === activeType) || questionTypes[0];
+  return surveyTopics.find((type) => type.id === activeType) || surveyTopics[0];
 }
 
 function renderTabs() {
   const wrap = document.querySelector("#typeTabs");
   wrap.innerHTML = "";
 
-  questionTypes.forEach((type) => {
+  surveyTopics.forEach((type) => {
     const button = el("button", `segment-button${activeType === type.id ? " active" : ""}`, type.label);
     button.type = "button";
     button.addEventListener("click", () => {
@@ -656,20 +906,23 @@ function renderScripts() {
   wrap.innerHTML = "";
   const type = getActiveType();
   const card = el("article", "script-item wide");
-  card.append(el("p", "eyebrow", type.label), el("h3", null, type.title), el("p", "muted", type.goal));
+  card.append(el("p", "eyebrow", "추천 서베이"), el("h3", null, type.title), el("p", "muted", type.goal));
+
+  const surveyList = el("div", "survey-list");
+  type.surveyItems.forEach((item) => surveyList.append(el("span", null, item)));
 
   const questionList = el("div", "question-list");
   shuffle(type.questions)
     .slice(0, 5)
-    .forEach(([question, ko]) => {
+    .forEach(([pattern, question, ko]) => {
       const questionRow = el("p", "mini-question");
-      questionRow.append(el("strong", null, question), el("span", null, ko));
+      questionRow.append(el("em", null, pattern), el("strong", null, question), el("span", null, ko));
       questionList.append(questionRow);
     });
 
   const lines = el("div", "script-lines");
   type.answer.forEach((line) => lines.append(createLine(line)));
-  card.append(questionList, lines);
+  card.append(surveyList, questionList, lines);
   wrap.append(card);
 }
 
@@ -683,7 +936,7 @@ function handlePracticeButton() {
 
 function startPractice() {
   clearInterval(timerId);
-  const type = pickRandom(questionTypes);
+  const type = pickRandom(surveyTopics);
   const question = pickRandom(type.questions);
   currentPractice = { type, question };
   remainingSeconds = 60;
@@ -695,7 +948,7 @@ function startPractice() {
 
   document.querySelector("#practiceResult").classList.add("hidden");
   document.querySelector("#practiceState").textContent = "말하는 중";
-  document.querySelector("#practiceQuestion").textContent = question[0];
+  document.querySelector("#practiceQuestion").textContent = question[1];
   document.querySelector("#practiceGuide").textContent = "지금은 질문만 보고 말하세요. 종료 버튼을 누르면 바로 답변을 확인합니다.";
   updateTimer();
 
@@ -720,8 +973,8 @@ function finishPractice() {
   const { type, question } = currentPractice;
   document.querySelector("#practiceState").textContent = "답변 확인";
   document.querySelector("#practiceGuide").textContent = "답변을 보면서 같은 표현을 다시 소리 내서 읽으세요.";
-  document.querySelector("#resultType").textContent = `${type.label} - ${type.title}`;
-  document.querySelector("#resultQuestionKo").textContent = question[1];
+  document.querySelector("#resultType").textContent = `${type.label} - ${question[0]}`;
+  document.querySelector("#resultQuestionKo").textContent = question[2];
 
   const answer = document.querySelector("#resultAnswer");
   answer.innerHTML = "";

@@ -1,0 +1,148 @@
+# OPIC TIP
+
+작성일: 2026-06-05
+
+## 1. OPIC 서베이란?
+
+OPIC 서베이, 즉 Background Survey는 시험 전에 응시자의 직장, 학교, 거주 형태, 개인 활동, 관심사 등을 선택하는 설문이다. ACTFL 공식 설명에 따르면 이 설문 답변은 말하기 과제에서 어떤 주제의 질문이 랜덤으로 나올지 결정하는 데 사용된다.
+
+쉽게 말하면 서베이는 `내가 받을 질문의 소재를 고르는 과정`이다.
+
+예:
+
+- 직장 있음 → 직장/업무 질문 가능
+- 가족과 아파트 거주 → 집/동네/가족 질문 가능
+- 공원 가기 선택 → 공원 묘사, 공원 루틴, 공원 과거 경험 질문 가능
+- 카페 가기 선택 → 카페 묘사, 주문, 최근 방문 경험 질문 가능
+
+## 2. 왜 중요한가?
+
+OPIC은 질문의 주제가 서베이 선택과 연결된다. 그래서 영어 초보자는 좋아하는 주제보다 `쉬운 영어로 오래 말할 수 있는 주제`를 선택해야 한다.
+
+잘못된 선택:
+
+- 실제 경험이 별로 없음
+- 한국어로도 설명하기 어려움
+- 영어 단어가 많이 필요함
+- 각 주제마다 완전히 다른 스크립트가 필요함
+
+좋은 선택:
+
+- 실제로 자주 하는 활동
+- 장소, 루틴, 과거 경험을 모두 말할 수 있음
+- 같은 표현을 여러 주제에 반복 사용 가능
+- `after work`, `near my home`, `comfortable`, `It helps me relax`로 돌려 말할 수 있음
+
+## 3. 추천 서베이 전략
+
+우리 목표는 IL이다. 따라서 서베이는 아래 기준으로 선택한다.
+
+1. 난이도는 3을 우선 선택한다.
+2. 4~7번 서베이 항목은 너무 많이 고르지 않는다.
+3. 서로 연결되는 항목을 묶어서 고른다.
+4. 답변은 `묘사 → 루틴 → 과거 경험`으로 확장 가능해야 한다.
+5. 영어 단어가 어려운 항목은 피한다.
+
+추천 묶음:
+
+| 묶음 | 선택 항목 | 이유 |
+|---|---|---|
+| 공원 묶음 | 공원 가기, 걷기, 음악 감상 | 한 장소에서 루틴과 경험을 모두 말할 수 있음 |
+| 카페 묶음 | 카페 가기, 쇼핑하기, 음식/외식 | 집 근처 활동으로 쉽게 연결 가능 |
+| 집 묶음 | 가족과 아파트 거주, 집에서 쉬기, TV/영상 보기 | 단어가 쉽고 자주 나오는 주제 |
+| 취미 묶음 | 게임 하기, 음악 감상, 휴대폰 사용 | 집에서 하는 활동으로 공통 표현 사용 가능 |
+| 여행 묶음 | 국내 여행, 집에서 보내는 휴가, 대중교통 | 복잡한 해외 단어 없이 경험 말하기 가능 |
+
+피하는 것이 좋은 항목:
+
+| 항목 | 이유 |
+|---|---|
+| 악기 연주 | 악기, 연습, 공연 단어가 필요함 |
+| 캠핑 | 장비, 장소, 날씨 단어가 필요함 |
+| 해외여행 | 공항, 숙소, 관광 단어가 필요함 |
+| 자원봉사 | 활동 설명이 길어질 수 있음 |
+| 스포츠 세부 종목 | 규칙과 동작 설명이 어려울 수 있음 |
+
+## 4. 서베이 주제와 문제 패턴의 차이
+
+중요한 구분:
+
+- `서베이 주제`: 공원, 카페, 게임, 집, 직장, 여행처럼 질문의 소재
+- `문제 패턴`: 묘사, 루틴, 과거 경험, 비교, 롤플레이처럼 답변 방식
+
+예를 들어 `공원 가기`를 선택하면 공원이라는 같은 주제로 아래처럼 질문이 바뀐다.
+
+| 문제 패턴 | 예시 |
+|---|---|
+| 묘사 | Describe a park near your home. |
+| 루틴 | How often do you go to a park? |
+| 과거 경험 | Tell me about the last time you went to a park. |
+| 비교 | Compare your free time now and in the past. |
+| 의견 | Why do you like walking in the park? |
+| 돌발 | Tell me about a problem you had at a park. |
+
+그래서 대시보드는 `서베이 주제별 탭`으로 정리하고, 각 탭 안에 문제 패턴 질문을 랜덤으로 보여준다.
+
+## 5. 콤보란?
+
+콤보는 같은 주제에서 2~3개의 질문이 이어지는 묶음이다. 공식 핸드북은 OPIc 질문이 특정 주제를 중심으로 여러 prompt가 묶인 testlet 형태로 구성될 수 있다고 설명한다. 국내 학습 자료에서는 이를 보통 `2단 콤보`, `3단 콤보`라고 부른다.
+
+예: 공원 콤보
+
+```text
+1. 묘사: Describe a park near your home.
+2. 루틴: How often do you go to the park?
+3. 과거 경험: Tell me about the last time you went to the park.
+```
+
+콤보 대비 핵심:
+
+- 같은 주제에서 답변을 확장한다.
+- 첫 질문은 장소/대상 묘사로 시작하는 경우가 많다.
+- 다음 질문은 루틴이나 최근 활동으로 이어질 수 있다.
+- 마지막 질문은 과거 경험, 문제 경험, 비교로 깊어질 수 있다.
+
+## 6. 문제 수와 난이도
+
+국내 학습 자료에서는 난이도 선택에 따라 문항 수가 달라진다고 설명한다.
+
+- 1~2단계: 약 12문항
+- 3~5단계: 약 15문항
+- 5~7번 이후 난이도 조정 가능
+- 조정 선택은 하락, 유지, 상승 형태로 이해하면 된다.
+
+IL 목표자는 무리하게 높은 난이도를 고르기보다, 난이도 3에서 쉬운 문장을 안정적으로 말하는 전략이 좋다.
+
+## 7. 대표 문제 패턴
+
+| 패턴 | 핵심 | IL 답변 전략 |
+|---|---|---|
+| 묘사 | 장소, 환경, 인물 설명 | `It is small and clean.` |
+| 루틴 | 반복 습관, 빈도 | `I usually do it after work.` |
+| 과거 경험 | 과거에 한 일 | `Last weekend, I went there.` |
+| 롤플레이 | 질문, 요청, 변경 | `Can I change the time?` |
+| 비교/의견 | 두 대상 비교, 이유 | `I like it because it is easy.` |
+| 돌발 | 예상 못한 문제 | `There is a problem.` |
+
+## 8. 우리 프로젝트의 서베이 선택 방향
+
+우리는 아래 항목을 중심으로 준비한다.
+
+| 대시보드 탭 | 대응 서베이/주제 | 공통 답변 표현 |
+|---|---|---|
+| 자기소개/거주 | 집, 가족, 거주지 | `I live in Daegu, Korea.` |
+| 직장 | 회사, 업무 | `I work for Samsung Electronics.` |
+| 공원/걷기 | 공원, 걷기, 음악 | `Whenever I have free time, I go to a park.` |
+| 카페/쇼핑 | 카페, 쇼핑, 음식 | `I often go to a cafe near my home.` |
+| 게임/음악 | 게임, 음악 | `Playing games is one of my hobbies.` |
+| 여행/교통 | 국내 여행, 대중교통 | `Last year, I went to Busan.` |
+| 기술/집안일 | 휴대폰, 인터넷, 집안일 | `I usually use my phone every day.` |
+| 롤플레이 공통 | 예약, 변경, 문제 해결 | `Can I change the time?` |
+| 위기탈출 | 모든 주제 | `I am not sure, but I will try.` |
+
+## 9. 참고 자료
+
+- [ACTFL OPIc 공식 소개](https://www.actfl.org/assessments/postsecondary-assessments/oral-proficiency-interview-computer-opic)
+- [LTI OPIc Examinee Handbook PDF](https://www.languagetesting.com/pub/media/wysiwyg/PDF/opic-examinee-handbook.pdf)
+- [OPIc 배경 설문 항목 정리](https://zetawiki.com/wiki/OPIc_%EB%B0%B0%EA%B2%BD_%EC%84%A4%EB%AC%B8)
+- [설문항목 3콤보 문제 설명](https://opicmanager.tistory.com/entry/%EC%98%A4%ED%94%BDOPIc-%EB%AC%B4%ED%83%88%ED%95%98%EA%B8%B0%EC%98%A4%ED%94%BD-%EB%AC%B8%EC%A0%9C-%EC%9C%A0%ED%98%95-3-%EC%84%A4%EB%AC%B8%ED%95%AD%EB%AA%A9-3%EC%BD%A4%EB%B3%B4-%EB%AC%B8%EC%A0%9C)

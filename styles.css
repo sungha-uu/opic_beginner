@@ -305,10 +305,38 @@ button {
   background: var(--paper);
 }
 
+.survey-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.survey-list span {
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--green-soft);
+  color: var(--green);
+  padding: 5px 10px;
+  font-size: 13px;
+  font-weight: 700;
+}
+
 .mini-question {
   display: grid;
   gap: 2px;
   margin: 0;
+}
+
+.mini-question em {
+  width: fit-content;
+  border-radius: 6px;
+  background: #ffffff;
+  color: var(--green);
+  padding: 2px 6px;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 800;
 }
 
 .mini-question strong {
@@ -383,50 +411,6 @@ button {
   font-size: 13px;
 }
 
-.combo-panel {
-  margin-top: 16px;
-}
-
-.combo-diagram {
-  display: grid;
-  grid-template-columns: 1fr auto 1fr auto 1fr auto 1fr;
-  gap: 10px;
-  align-items: center;
-  margin-top: 16px;
-}
-
-.combo-card {
-  min-height: 156px;
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  background: var(--paper);
-  padding: 14px;
-  display: grid;
-  gap: 8px;
-  align-content: start;
-}
-
-.combo-card strong {
-  color: var(--green);
-  font-size: 15px;
-}
-
-.combo-card span {
-  border-left: 3px solid var(--green);
-  padding-left: 8px;
-  font-weight: 700;
-}
-
-.combo-card.escape span {
-  border-left-color: var(--coral);
-}
-
-.combo-arrow {
-  color: var(--blue);
-  font-size: 24px;
-  font-weight: 900;
-}
-
 .sentence-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -471,14 +455,8 @@ button {
   .result-grid,
   .script-board,
   .sentence-grid,
-  .tips-layout,
-  .combo-diagram {
+  .tips-layout {
     grid-template-columns: 1fr;
-  }
-
-  .combo-arrow {
-    transform: rotate(90deg);
-    text-align: center;
   }
 }
 
