@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>OPIC IL Dashboard</title>
+    <title>OPIC IL Script Trainer</title>
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
@@ -12,170 +12,67 @@
         <div class="brand">
           <span class="brand-mark">IL</span>
           <div>
-            <h1>OPIC Master</h1>
-            <p>IL 목표 학습 대시보드</p>
+            <h1>OPIC Trainer</h1>
+            <p>유형별 스크립트 암기</p>
           </div>
         </div>
 
         <nav class="nav-list" aria-label="대시보드 섹션">
-          <a href="#today" class="nav-link active">오늘</a>
-          <a href="#scripts" class="nav-link">스크립트</a>
-          <a href="#practice" class="nav-link">연습</a>
-          <a href="#vocab" class="nav-link">단어</a>
-          <a href="#exam" class="nav-link">시험</a>
+          <a href="#scripts" class="nav-link active">맞춤 스크립트</a>
+          <a href="#practice" class="nav-link">60초 연습</a>
         </nav>
 
         <div class="sidebar-note">
-          <span>목표</span>
-          <strong>쉬운 문장을 멈추지 않고 말하기</strong>
+          <span>프로젝트 목표</span>
+          <strong>질문은 다양하게, 답변은 익숙한 표현으로</strong>
         </div>
       </aside>
 
       <main class="main">
-        <section id="today" class="section-band">
-          <div class="topbar">
-            <div>
-              <p class="eyebrow">2026 OPIC IL</p>
-              <h2>오늘은 말하기 5문장만 확실히</h2>
-            </div>
-            <div class="exam-pill">
-              <span>다음 시험</span>
-              <strong id="dDay">D-30</strong>
-            </div>
-          </div>
-
-          <div class="dashboard-grid">
-            <article class="panel readiness-panel">
-              <div class="panel-header">
-                <div>
-                  <p class="eyebrow">Daily Readiness</p>
-                  <h3>오늘 준비도</h3>
-                </div>
-                <strong id="readinessScore">0</strong>
-              </div>
-              <div class="score-track" aria-hidden="true">
-                <span id="scoreFill"></span>
-              </div>
-              <p id="readinessText" class="muted">체크리스트를 완료하면 점수가 올라갑니다.</p>
-            </article>
-
-            <article class="panel">
-              <div class="panel-header">
-                <div>
-                  <p class="eyebrow">Today's Checklist</p>
-                  <h3>오늘 할 일</h3>
-                </div>
-                <button class="icon-button" id="resetToday" type="button" title="오늘 체크 초기화">↺</button>
-              </div>
-              <div class="checklist" id="checklist"></div>
-            </article>
-
-            <article class="panel focus-panel">
-              <div class="panel-header">
-                <div>
-                  <p class="eyebrow">Priority Script</p>
-                  <h3>오늘의 고정 표현</h3>
-                </div>
-                <button class="icon-button" id="copyPriority" type="button" title="표현 복사">⧉</button>
-              </div>
-              <div class="script-lines" id="priorityScript"></div>
-            </article>
-          </div>
-        </section>
-
         <section id="scripts" class="section-band">
           <div class="section-title">
             <div>
               <p class="eyebrow">Script Library</p>
-              <h2>개인 맞춤 스크립트</h2>
+              <h2>OPIC 유형별 맞춤 스크립트</h2>
             </div>
-            <div class="segmented" id="topicTabs" role="tablist" aria-label="스크립트 주제"></div>
+            <div class="segmented" id="typeTabs" role="tablist" aria-label="OPIC 유형"></div>
           </div>
-          <div class="script-board" id="scriptBoard"></div>
+          <div class="script-board single" id="scriptBoard"></div>
         </section>
 
         <section id="practice" class="section-band">
-          <div class="practice-layout">
-            <article class="panel practice-panel">
-              <div class="panel-header">
-                <div>
-                  <p class="eyebrow">Random Practice</p>
-                  <h3>랜덤 질문</h3>
-                </div>
-                <button class="primary-button" id="nextQuestion" type="button">새 질문</button>
-              </div>
-              <p class="question" id="randomQuestion"></p>
-              <div class="practice-actions">
-                <button class="primary-button" id="startTimer" type="button">60초 연습</button>
-                <button class="secondary-button" id="recordButton" type="button">녹음 시작</button>
-                <span class="timer" id="timer">00:00</span>
-              </div>
-              <audio id="audioPlayback" controls hidden></audio>
-            </article>
-
-            <article class="panel">
-              <div class="panel-header">
-                <div>
-                  <p class="eyebrow">Self Check</p>
-                  <h3>답변 후 체크</h3>
-                </div>
-              </div>
-              <div class="self-check" id="selfCheck"></div>
-            </article>
-          </div>
-        </section>
-
-        <section id="vocab" class="section-band">
-          <div class="section-title">
+          <div class="topbar">
             <div>
-              <p class="eyebrow">Vocabulary</p>
-              <h2>오늘 외울 단어</h2>
+              <p class="eyebrow">Random 60 Seconds</p>
+              <h2>질문만 보고 60초 동안 말하기</h2>
             </div>
-            <button class="secondary-button" id="shuffleVocab" type="button">섞기</button>
+            <button class="primary-button large-button" id="practiceButton" type="button">60초 연습</button>
           </div>
-          <div class="vocab-grid" id="vocabGrid"></div>
-        </section>
 
-        <section id="exam" class="section-band">
-          <div class="exam-grid">
-            <article class="panel">
-              <div class="panel-header">
-                <div>
-                  <p class="eyebrow">Exam Tracker</p>
-                  <h3>시험 일정</h3>
-                </div>
-              </div>
-              <label class="field">
-                다음 시험일
-                <input type="date" id="examDate" />
-              </label>
-              <label class="field">
-                목표 등급
-                <input type="text" value="IL" disabled />
-              </label>
-              <label class="field">
-                최근 결과
-                <select id="latestResult">
-                  <option value="">아직 없음</option>
-                  <option>NL</option>
-                  <option>NM</option>
-                  <option>NH</option>
-                  <option>IL</option>
-                  <option>IM1</option>
-                </select>
-              </label>
-            </article>
+          <article class="practice-stage">
+            <div class="stage-status">
+              <span id="practiceState">대기</span>
+              <strong id="timer">00:00</strong>
+            </div>
+            <p class="question" id="practiceQuestion">60초 연습 버튼을 누르면 실제 OPIC 유형과 질문이 랜덤으로 나옵니다.</p>
+            <p class="muted" id="practiceGuide">연습 중에는 질문만 보입니다. 종료하거나 60초가 지나면 유형, 해석, 좋은 답변 예시가 열립니다.</p>
+          </article>
 
-            <article class="panel">
-              <div class="panel-header">
-                <div>
-                  <p class="eyebrow">Weak Topics</p>
-                  <h3>다음 보완</h3>
-                </div>
-              </div>
-              <textarea id="weakMemo" rows="8" placeholder="시험 후 기억나는 질문, 막힌 주제, 다음에 외울 표현을 적어두세요."></textarea>
-            </article>
-          </div>
+          <section class="result-panel hidden" id="practiceResult" aria-live="polite">
+            <div class="result-grid">
+              <article class="panel">
+                <p class="eyebrow">Question Type</p>
+                <h3 id="resultType"></h3>
+                <p id="resultQuestionKo" class="translation"></p>
+              </article>
+
+              <article class="panel answer-panel">
+                <p class="eyebrow">Good Answer</p>
+                <h3>좋은 답변 예시</h3>
+                <div class="script-lines" id="resultAnswer"></div>
+              </article>
+            </div>
+          </section>
         </section>
       </main>
     </div>
