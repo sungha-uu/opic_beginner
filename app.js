@@ -288,6 +288,22 @@ function createTtsButton(text, label) {
   return button;
 }
 
+function getFullAnswerText(bundle) {
+  return bundle.answer.map(([english]) => english).join(" ");
+}
+
+function createFullAnswerTtsButton(bundle) {
+  const button = el("button", "full-tts-button", "전체 듣기");
+  button.type = "button";
+  button.setAttribute("aria-label", `답변 패턴 #${bundle.patternNo} 전체 듣기`);
+  button.title = "답변 전체 듣기";
+  button.addEventListener("click", (event) => {
+    event.stopPropagation();
+    speakText(getFullAnswerText(bundle));
+  });
+  return button;
+}
+
 function createLine([english, sound]) {
   const row = el("div", "script-line");
   row.tabIndex = 0;
@@ -311,7 +327,7 @@ function createQuestionRow([pattern, question, ko]) {
 
 function createPatternTitle(bundle) {
   const title = el("div", "pattern-title");
-  title.append(el("span", null, `답변 패턴 #${bundle.patternNo}`), el("strong", null, bundle.label));
+  title.append(el("span", null, `답변 패턴 #${bundle.patternNo}`), el("strong", null, bundle.label), createFullAnswerTtsButton(bundle));
   return title;
 }
 
@@ -455,6 +471,11 @@ function finishPractice() {
   const answer = document.querySelector("#resultAnswer");
   answer.innerHTML = "";
   bundle.answer.forEach((line) => answer.append(createLine(line)));
+  const title = document.querySelector("#resultAnswerTitle");
+  document.querySelector("#resultFullTts")?.remove();
+  const fullTtsButton = createFullAnswerTtsButton(bundle);
+  fullTtsButton.id = "resultFullTts";
+  title.after(fullTtsButton);
   document.querySelector("#practiceResult").classList.remove("hidden");
 }
 

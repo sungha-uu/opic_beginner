@@ -635,9 +635,26 @@ button {
   background: var(--blue-soft);
 }
 
+.full-tts-button {
+  min-height: 30px;
+  border: 1px solid var(--blue);
+  border-radius: 999px;
+  background: var(--blue);
+  color: #ffffff;
+  padding: 0 11px;
+  font-size: 12px;
+  font-weight: 900;
+  white-space: nowrap;
+}
+
+.full-tts-button:hover {
+  background: #255ed0;
+}
+
 .pattern-title {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   gap: 10px;
   margin: 10px 0 2px;
   border-top: 1px solid var(--line);
@@ -655,6 +672,10 @@ button {
 
 .pattern-title strong {
   font-size: 16px;
+}
+
+#resultFullTts {
+  margin: 8px 0 12px;
 }
 
 .script-lines {
