@@ -351,13 +351,21 @@ function createAnswerToolbar(bundle) {
 
 function createLine([english, sound]) {
   const row = el("div", "script-line");
-  row.tabIndex = 0;
-  row.addEventListener("touchstart", () => row.classList.add("show-sound"), { passive: true });
-  row.addEventListener("touchend", () => row.classList.remove("show-sound"));
-  row.addEventListener("touchcancel", () => row.classList.remove("show-sound"));
-  row.addEventListener("mouseleave", () => row.classList.remove("show-sound"));
   const top = el("div", "line-top");
-  top.append(el("strong", null, english), createTtsButton(english, "영어 답변 듣기"));
+  const englishText = el("strong", "line-english", english);
+  englishText.tabIndex = 0;
+  englishText.setAttribute("role", "button");
+  englishText.setAttribute("aria-expanded", "false");
+  englishText.addEventListener("click", () => {
+    const isOpen = row.classList.toggle("show-sound");
+    englishText.setAttribute("aria-expanded", String(isOpen));
+  });
+  englishText.addEventListener("keydown", (event) => {
+    if (event.key !== "Enter" && event.key !== " ") return;
+    event.preventDefault();
+    englishText.click();
+  });
+  top.append(englishText, createTtsButton(english, "영어 답변 듣기"));
   row.append(top, el("span", "pronunciation", sound));
   return row;
 }

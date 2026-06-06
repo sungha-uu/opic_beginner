@@ -788,10 +788,12 @@ button {
   cursor: default;
 }
 
+.line-english,
 .memo-english {
   cursor: pointer;
 }
 
+.line-english:focus,
 .memo-english:focus {
   border-radius: 4px;
   outline: 2px solid var(--blue-soft);
@@ -816,10 +818,6 @@ button {
     margin-top 120ms ease;
 }
 
-.script-line:hover span,
-.script-line:active span,
-.script-line:focus span,
-.script-line:focus-within span,
 .script-line.show-sound span {
   margin-top: 3px;
   max-height: 42px;
