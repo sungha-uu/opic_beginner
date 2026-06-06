@@ -185,7 +185,7 @@ const bundles = [
     patternNo: 6,
     colorGroup: "surprise",
     surveyItems: ["직장/학교 돌발", "기술/전화 문제", "예약/변경 롤플레이", "모르는 질문"],
-    goal: "모르는 질문도 당황하지 않고 짧게 인정한 뒤, 아는 경험으로 연결한다.",
+    goal: "돌발 문제를 받으면 장소나 상황을 짧게 말하고, 작은 문제를 설명한 뒤 도움 요청과 해결로 마무리한다.",
     questions: [
       ["돌발 묘사", "Tell me about a bank near your home.", "집 근처 은행에 대해 말해주세요."],
       ["돌발 묘사", "Describe a hospital or pharmacy you know.", "아는 병원이나 약국을 묘사해주세요."],
@@ -199,17 +199,16 @@ const bundles = [
       ["위기탈출", "You do not know this topic well. Try to answer.", "잘 모르는 주제입니다. 답변을 시도하세요."]
     ],
     answer: [
-      ["That is an interesting question.", "댓 이즈 언 인터레스팅 퀘스천."],
-      ["I am not sure, but I will try.", "아이 앰 낫 슈어, 벗 아이 윌 트라이."],
-      ["I do not know much about it.", "아이 두 낫 노우 머치 어바웃 잇."],
-      ["But I can talk about my experience.", "벗 아이 캔 토크 어바웃 마이 익스피리언스."],
-      ["There is a place near my home.", "데어 이즈 어 플레이스 니어 마이 홈."],
-      ["Last weekend, I went there with my friend.", "래스트 위켄드, 아이 웬트 데어 위드 마이 프렌드."],
-      ["One time, I had a small problem there.", "원 타임, 아이 해드 어 스몰 프라블럼 데어."],
-      ["But it was okay.", "벗 잇 워즈 오케이."],
-      ["It is small, quiet, and clean.", "잇 이즈 스몰, 콰이엇, 앤 클린."],
-      ["Can you help me?", "캔 유 헬프 미?"],
-      ["Thank you for your help.", "땡큐 포 유어 헬프."]
+      ["There is a small place near my home.", "데어 이즈 어 스몰 플레이스 니어 마이 홈."],
+      ["I sometimes go there when I need help.", "아이 섬타임즈 고 데어 웬 아이 니드 헬프."],
+      ["One time, I had a small problem with my phone.", "원 타임, 아이 해드 어 스몰 프라블럼 위드 마이 폰."],
+      ["So I called the place and explained the situation.", "쏘 아이 콜드 더 플레이스 앤 익스플레인드 더 시추에이션."],
+      ["I said, I am sorry, but I need your help.", "아이 세드, 아이 앰 쏘리, 벗 아이 니드 유어 헬프."],
+      ["Can I change my appointment to another time?", "캔 아이 체인지 마이 어포인트먼트 투 어나더 타임?"],
+      ["The staff was kind and helped me.", "더 스태프 워즈 카인드 앤 헬프트 미."],
+      ["So I solved the problem.", "쏘 아이 솔브드 더 프라블럼."],
+      ["It was a little stressful, but it was okay.", "잇 워즈 어 리틀 스트레스풀, 벗 잇 워즈 오케이."],
+      ["I felt good after that.", "아이 펠트 굿 애프터 댓."]
     ]
   },
   {
