@@ -309,6 +309,33 @@ button {
   font-weight: 800;
 }
 
+.memo-source {
+  margin: 12px 0;
+  border-left: 4px solid var(--coral);
+  padding-left: 12px;
+  color: var(--ink);
+  font-size: 16px;
+  font-weight: 800;
+}
+
+.memo-meaning {
+  margin: 12px 0 0;
+  border-radius: 8px;
+  background: var(--paper);
+  padding: 10px 12px;
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.memo-empty {
+  grid-column: 1 / -1;
+}
+
+.memo-empty h3 {
+  margin: 0 0 8px;
+}
+
 .segmented {
   display: flex;
   flex-wrap: wrap;
@@ -335,7 +362,15 @@ button {
   padding-bottom: 24px;
 }
 
+.memo-section {
+  padding-bottom: 32px;
+}
+
 .all-patterns-panel {
+  margin-top: 8px;
+}
+
+.memo-panel {
   margin-top: 8px;
 }
 
@@ -343,7 +378,17 @@ button {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
+.memo-board {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
 .all-pattern-card .pattern-title {
+  margin-top: 0;
+  border-top: 0;
+  padding-top: 0;
+}
+
+.memo-card .pattern-title {
   margin-top: 0;
   border-top: 0;
   padding-top: 0;
@@ -818,6 +863,7 @@ button {
   .survey-grid,
   .bundle-layout,
   .sentence-grid,
+  .memo-board,
   .tips-layout {
     grid-template-columns: 1fr;
   }

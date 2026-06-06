@@ -18,6 +18,8 @@ const baseAnswer = [
   ["It makes me feel good and relaxed.", "잇 메익스 미 필 굿 앤 릴랙스트."]
 ];
 
+const personalNotes = [];
+
 const bundles = [
   {
     id: "park",
@@ -330,6 +332,20 @@ function createQuestionRow([pattern, question, ko]) {
   return row;
 }
 
+function createMemoCard(note, index) {
+  const card = el("article", "script-item memo-card");
+  const title = el("div", "pattern-title memo-title");
+  title.append(el("span", null, `메모 #${index + 1}`), el("strong", null, note.title || "개인 문장"));
+
+  const source = el("p", "memo-source", note.ko);
+  const lines = el("div", "script-lines");
+  lines.append(createLine([note.en, note.sound]));
+
+  const meaning = el("p", "memo-meaning", note.meaning);
+  card.append(title, source, lines, meaning);
+  return card;
+}
+
 function createPatternTitle(bundle) {
   const title = el("div", "pattern-title");
   title.append(el("span", null, `답변 패턴 #${bundle.patternNo}`), el("strong", null, bundle.label));
@@ -422,6 +438,25 @@ function renderAllPatterns() {
   });
 }
 
+function renderMemoNotes() {
+  const wrap = document.querySelector("#memoBoard");
+  wrap.innerHTML = "";
+
+  if (personalNotes.length === 0) {
+    const empty = el("article", "panel memo-empty");
+    empty.append(
+      el("h3", null, "아직 메모가 없습니다"),
+      el("p", "muted", "한국어 문장을 말하고 메모장에 올려달라고 하면 영어 번역, 발음, 해석을 여기에 하나씩 추가합니다.")
+    );
+    wrap.append(empty);
+    return;
+  }
+
+  personalNotes.forEach((note, index) => {
+    wrap.append(createMemoCard(note, index));
+  });
+}
+
 function handlePracticeButton() {
   if (isPracticing) {
     finishPractice();
@@ -510,11 +545,23 @@ function bindAllPatternsToggle() {
   });
 }
 
+function bindMemoToggle() {
+  const button = document.querySelector("#toggleMemo");
+  const panel = document.querySelector("#memoPanel");
+
+  button.addEventListener("click", () => {
+    const isHidden = panel.classList.toggle("hidden");
+    button.setAttribute("aria-expanded", String(!isHidden));
+    button.textContent = isHidden ? "메모장 보기" : "메모장 숨기기";
+  });
+}
+
 function renderAll() {
   renderSurvey();
   renderBundles();
   renderScript();
   renderAllPatterns();
+  renderMemoNotes();
 }
 
 document.querySelector("#practiceButton").addEventListener("click", handlePracticeButton);
@@ -525,3 +572,4 @@ renderAll();
 updateTimer();
 bindNav();
 bindAllPatternsToggle();
+bindMemoToggle();

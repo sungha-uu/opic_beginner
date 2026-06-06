@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>OPIC IL Script Trainer</title>
-    <link rel="stylesheet" href="./styles.css?v=20260606-surprise-pattern" />
+    <link rel="stylesheet" href="./styles.css?v=20260606-memo-notes" />
   </head>
   <body>
     <div class="app-shell">
@@ -23,6 +23,7 @@
           <a href="#practice" class="nav-link">60초 연습</a>
           <a href="#tips" class="nav-link">Tip</a>
           <a href="#all-patterns" class="nav-link">모든 패턴</a>
+          <a href="#memo" class="nav-link">메모장</a>
         </nav>
 
         <div class="sidebar-note">
@@ -157,9 +158,31 @@
             <div class="script-board all-patterns-board" id="allPatternsBoard"></div>
           </div>
         </section>
+
+        <section id="memo" class="section-band memo-section">
+          <div class="section-title">
+            <div>
+              <p class="eyebrow">Personal Notes</p>
+              <h2>메모장</h2>
+            </div>
+            <button
+              class="secondary-button"
+              id="toggleMemo"
+              type="button"
+              aria-expanded="false"
+              aria-controls="memoPanel"
+            >
+              메모장 보기
+            </button>
+          </div>
+
+          <div class="memo-panel hidden" id="memoPanel">
+            <div class="script-board memo-board" id="memoBoard"></div>
+          </div>
+        </section>
       </main>
     </div>
 
-    <script src="./app.js?v=20260606-surprise-pattern"></script>
+    <script src="./app.js?v=20260606-memo-notes"></script>
   </body>
 </html>
