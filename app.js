@@ -323,6 +323,27 @@ function speakText(text) {
   synth.speak(utterance);
 }
 
+function speakTextSequence(texts, delayMs = 1000) {
+  const synth = window.speechSynthesis || window.webkitSpeechSynthesis;
+  if (!synth) return;
+  synth.cancel();
+
+  let index = 0;
+  const speakNext = () => {
+    if (index >= texts.length) return;
+    const utterance = new SpeechSynthesisUtterance(texts[index]);
+    utterance.lang = "en-US";
+    utterance.rate = 0.82;
+    utterance.onend = () => {
+      index += 1;
+      window.setTimeout(speakNext, delayMs);
+    };
+    synth.speak(utterance);
+  };
+
+  speakNext();
+}
+
 function createTtsButton(text, label) {
   const button = el("button", "tts-button", "▶");
   button.type = "button";
@@ -363,7 +384,7 @@ function createQuestionTtsButton(questions) {
   button.setAttribute("aria-label", "질문 전체 재생");
   button.title = "질문 전체 재생";
   button.addEventListener("click", () => {
-    speakText(questions.map(([, question]) => question).join(" "));
+    speakTextSequence(questions.map(([, question]) => question), 1000);
   });
   return button;
 }
