@@ -20,6 +20,7 @@ const baseAnswer = [
 
 const personalNotes = [
   {
+    id: "danger-come-down",
     title: "위험 경고",
     ko: "위험해, 거기서 내려와.",
     en: "It's dangerous. Come down from there.",
@@ -27,6 +28,7 @@ const personalNotes = [
     meaning: "위험한 상황에서 상대에게 그 장소에서 내려오라고 말하는 표현입니다."
   },
   {
+    id: "go-over-there",
     title: "이동 제안",
     ko: "저쪽으로 가자.",
     en: "Let's go over there.",
@@ -34,6 +36,8 @@ const personalNotes = [
     meaning: "상대에게 저쪽 방향이나 장소로 같이 가자고 제안하는 표현입니다."
   }
 ];
+
+const deletedMemoStorageKey = "opicDeletedMemoIds";
 
 const bundles = [
   {
@@ -278,6 +282,25 @@ function pickRandom(array) {
   return array[Math.floor(Math.random() * array.length)];
 }
 
+function getDeletedMemoIds() {
+  try {
+    return new Set(JSON.parse(localStorage.getItem(deletedMemoStorageKey) || "[]"));
+  } catch {
+    return new Set();
+  }
+}
+
+function saveDeletedMemoIds(ids) {
+  localStorage.setItem(deletedMemoStorageKey, JSON.stringify([...ids]));
+}
+
+function deleteMemoNote(id) {
+  const deletedIds = getDeletedMemoIds();
+  deletedIds.add(id);
+  saveDeletedMemoIds(deletedIds);
+  renderMemoNotes();
+}
+
 function getActiveBundle() {
   return bundles.find((bundle) => bundle.id === activeBundleId) || bundles[0];
 }
@@ -352,12 +375,17 @@ function createMemoCard(note, index) {
   const title = el("div", "pattern-title memo-title");
   title.append(el("span", null, `메모 #${index + 1}`), el("strong", null, note.title || "개인 문장"));
 
+  const deleteButton = el("button", "memo-delete-button", "삭제");
+  deleteButton.type = "button";
+  deleteButton.setAttribute("aria-label", `${note.title || "개인 문장"} 메모 삭제`);
+  deleteButton.addEventListener("click", () => deleteMemoNote(note.id));
+
   const source = el("p", "memo-source", note.ko);
   const lines = el("div", "script-lines");
   lines.append(createLine([note.en, note.sound]));
 
   const meaning = el("p", "memo-meaning", note.meaning);
-  card.append(title, source, lines, meaning);
+  card.append(title, deleteButton, source, lines, meaning);
   return card;
 }
 
@@ -456,18 +484,20 @@ function renderAllPatterns() {
 function renderMemoNotes() {
   const wrap = document.querySelector("#memoBoard");
   wrap.innerHTML = "";
+  const deletedIds = getDeletedMemoIds();
+  const visibleNotes = personalNotes.filter((note) => !deletedIds.has(note.id));
 
-  if (personalNotes.length === 0) {
+  if (visibleNotes.length === 0) {
     const empty = el("article", "panel memo-empty");
     empty.append(
       el("h3", null, "아직 메모가 없습니다"),
-      el("p", "muted", "한국어 문장을 말하고 메모장에 올려달라고 하면 영어 번역, 발음, 해석을 여기에 하나씩 추가합니다.")
+      el("p", "muted", "한국어 문장을 말하고 메모장에 올려달라고 하면 영어 번역, 발음, 해석을 여기에 하나씩 추가합니다. 삭제한 메모는 이 브라우저에서 다시 보이지 않습니다.")
     );
     wrap.append(empty);
     return;
   }
 
-  personalNotes.forEach((note, index) => {
+  visibleNotes.forEach((note, index) => {
     wrap.append(createMemoCard(note, index));
   });
 }

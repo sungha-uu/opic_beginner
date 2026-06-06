@@ -394,6 +394,23 @@ button {
   padding-top: 0;
 }
 
+.memo-delete-button {
+  width: 100%;
+  min-height: 36px;
+  margin: 0 0 12px;
+  border: 1px solid #ffd6cc;
+  border-radius: 8px;
+  background: #fff0eb;
+  color: var(--coral);
+  font-size: 13px;
+  font-weight: 900;
+}
+
+.memo-delete-button:hover {
+  border-color: var(--coral);
+  background: #ffe3db;
+}
+
 .script-item h3 {
   font-size: 22px;
 }
