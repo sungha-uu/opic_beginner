@@ -39,9 +39,15 @@ const bundles = [
       ["돌발", "Tell me about a problem you had at a park.", "공원에서 겪은 문제를 말해주세요."]
     ],
     answer: [
-      ["Whenever I have free time, I go to a park.", "웬에버 아이 해브 프리 타임, 아이 고 투 어 파크."],
-      ["Walking in the park is one of my hobbies.", "워킹 인 더 파크 이즈 원 어브 마이 하비즈."],
-      ...baseAnswer
+      ["Whenever I have free time, I go to a park near my home.", "웬에버 아이 해브 프리 타임, 아이 고 투 어 파크 니어 마이 홈."],
+      ["I usually go there after work.", "아이 유주얼리 고 데어 애프터 워크."],
+      ["Last weekend, I went there with my friend.", "래스트 위켄드, 아이 웬트 데어 위드 마이 프렌드."],
+      ["I like walking there.", "아이 라이크 워킹 데어."],
+      ["Walking is one of my hobbies.", "워킹 이즈 원 어브 마이 하비즈."],
+      ["One time, I got lost there.", "원 타임, 아이 갓 로스트 데어."],
+      ["But it was okay.", "벗 잇 워즈 오케이."],
+      ["The park is quiet, clean, and comfortable.", "더 파크 이즈 콰이엇, 클린, 앤 컴퍼터블."],
+      ["I recommend going there.", "아이 레커멘드 고잉 데어."]
     ]
   },
   {
@@ -64,10 +70,14 @@ const bundles = [
       ["돌발", "Tell me about a problem you had at home.", "집에서 겪은 문제를 말해주세요."]
     ],
     answer: [
-      ["I usually stay home after work.", "아이 유주얼리 스테이 홈 애프터 워크."],
-      ["My home is small, quiet, and comfortable.", "마이 홈 이즈 스몰, 콰이엇, 앤 컴퍼터블."],
+      ["Whenever I have free time, I stay home and relax.", "웬에버 아이 해브 프리 타임, 아이 스테이 홈 앤 릴랙스."],
+      ["I usually do that after work.", "아이 유주얼리 두 댓 애프터 워크."],
+      ["Last weekend, I stayed home with my family.", "래스트 위켄드, 아이 스테이드 홈 위드 마이 패밀리."],
       ["Sometimes I play games or watch a movie.", "섬타임즈 아이 플레이 게임즈 오어 워치 어 무비."],
-      ["Sometimes I listen to music at home.", "섬타임즈 아이 리슨 투 뮤직 앳 홈."],
+      ["Resting at home is one of my favorite things.", "레스팅 앳 홈 이즈 원 어브 마이 페이버릿 띵즈."],
+      ["One time, my internet did not work.", "원 타임, 마이 인터넷 디드 낫 워크."],
+      ["But it was okay.", "벗 잇 워즈 오케이."],
+      ["My home is small, quiet, and comfortable.", "마이 홈 이즈 스몰, 콰이엇, 앤 컴퍼터블."],
       ["I like it because it is comfortable.", "아이 라이크 잇 비커즈 잇 이즈 컴퍼터블."],
       ["It helps me relax.", "잇 헬프스 미 릴랙스."]
     ]
@@ -91,9 +101,13 @@ const bundles = [
       ["돌발", "Tell me about a problem you had while watching a movie.", "영화를 보다가 겪은 문제를 말해주세요."]
     ],
     answer: [
-      ["Listening to music is one of my hobbies.", "리슨닝 투 뮤직 이즈 원 어브 마이 하비즈."],
+      ["Whenever I have free time, I listen to music.", "웬에버 아이 해브 프리 타임, 아이 리슨 투 뮤직."],
       ["I usually listen to music after work.", "아이 유주얼리 리슨 투 뮤직 애프터 워크."],
+      ["Last weekend, I watched a movie with my friend.", "래스트 위켄드, 아이 워치트 어 무비 위드 마이 프렌드."],
       ["Sometimes I watch a movie near my home.", "섬타임즈 아이 워치 어 무비 니어 마이 홈."],
+      ["Listening to music is one of my hobbies.", "리슨닝 투 뮤직 이즈 원 어브 마이 하비즈."],
+      ["One time, the movie was too loud.", "원 타임, 더 무비 워즈 투 라우드."],
+      ["But it was okay.", "벗 잇 워즈 오케이."],
       ["The place is small, quiet, and clean.", "더 플레이스 이즈 스몰, 콰이엇, 앤 클린."],
       ["I like it because it is fun.", "아이 라이크 잇 비커즈 잇 이즈 펀."],
       ["It helps me relax.", "잇 헬프스 미 릴랙스."]
@@ -118,12 +132,17 @@ const bundles = [
       ["돌발", "Tell me about a problem you had while shopping.", "쇼핑 중 겪은 문제를 말해주세요."]
     ],
     answer: [
-      ["I often go to a cafe near my home.", "아이 오프튼 고 투 어 카페 니어 마이 홈."],
-      ["It is small, quiet, and clean.", "잇 이즈 스몰, 콰이엇, 앤 클린."],
+      ["Whenever I have free time, I go to a cafe near my home.", "웬에버 아이 해브 프리 타임, 아이 고 투 어 카페 니어 마이 홈."],
+      ["I usually go there after work.", "아이 유주얼리 고 데어 애프터 워크."],
+      ["Last weekend, I went there with my friend.", "래스트 위켄드, 아이 웬트 데어 위드 마이 프렌드."],
       ["I usually drink iced coffee there.", "아이 유주얼리 드링크 아이스드 커피 데어."],
+      ["Going to a cafe is one of my hobbies.", "고잉 투 어 카페 이즈 원 어브 마이 하비즈."],
+      ["One time, I lost my phone there.", "원 타임, 아이 로스트 마이 폰 데어."],
+      ["But I found it later.", "벗 아이 파운드 잇 레이터."],
+      ["It is small, quiet, and clean.", "잇 이즈 스몰, 콰이엇, 앤 클린."],
       ["Sometimes I go shopping near the cafe.", "섬타임즈 아이 고 쇼핑 니어 더 카페."],
       ["I like it because it is comfortable.", "아이 라이크 잇 비커즈 잇 이즈 컴퍼터블."],
-      ["It helps me relax.", "잇 헬프스 미 릴랙스."]
+      ["I recommend going there.", "아이 레커멘드 고잉 데어."]
     ]
   },
   {
@@ -145,16 +164,19 @@ const bundles = [
       ["돌발", "Have you ever had a problem while traveling?", "여행 중 문제가 있었던 적이 있나요?"]
     ],
     answer: [
+      ["Whenever I have free time, I like traveling.", "웬에버 아이 해브 프리 타임, 아이 라이크 트래블링."],
+      ["I usually travel with my family.", "아이 유주얼리 트래블 위드 마이 패밀리."],
       ["Last year, I went to Busan.", "래스트 이어, 아이 웬트 투 부산."],
       ["I went there with my family.", "아이 웬트 데어 위드 마이 패밀리."],
       ["We walked near the beach.", "위 워크트 니어 더 비치."],
-      ["The place was quiet and clean.", "더 플레이스 워즈 콰이엇 앤 클린."],
+      ["Traveling is one of my favorite things.", "트래블링 이즈 원 어브 마이 페이버릿 띵즈."],
       ["But there was a small problem.", "벗 데어 워즈 어 스몰 프라블럼."],
       ["I overslept in the morning.", "아이 오버슬렙트 인 더 모닝."],
       ["So we were a little late.", "쏘 위 워 어 리틀 레이트."],
+      ["The place was quiet and clean.", "더 플레이스 워즈 콰이엇 앤 클린."],
       ["I took some pictures there.", "아이 툭 섬 픽처스 데어."],
       ["But it was okay.", "벗 잇 워즈 오케이."],
-      ["It was fun and relaxing.", "잇 워즈 펀 앤 릴랙싱."]
+      ["I recommend going there.", "아이 레커멘드 고잉 데어."]
     ]
   },
   {
@@ -182,6 +204,9 @@ const bundles = [
       ["I do not know much about it.", "아이 두 낫 노우 머치 어바웃 잇."],
       ["But I can talk about my experience.", "벗 아이 캔 토크 어바웃 마이 익스피리언스."],
       ["There is a place near my home.", "데어 이즈 어 플레이스 니어 마이 홈."],
+      ["Last weekend, I went there with my friend.", "래스트 위켄드, 아이 웬트 데어 위드 마이 프렌드."],
+      ["One time, I had a small problem there.", "원 타임, 아이 해드 어 스몰 프라블럼 데어."],
+      ["But it was okay.", "벗 잇 워즈 오케이."],
       ["It is small, quiet, and clean.", "잇 이즈 스몰, 콰이엇, 앤 클린."],
       ["Can you help me?", "캔 유 헬프 미?"],
       ["Thank you for your help.", "땡큐 포 유어 헬프."]
