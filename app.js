@@ -59,6 +59,14 @@ const personalNotes = [
     en: "I like all movies with James Bond.",
     sound: "아이 라이크 올 무비즈 위드 제임스 본드.",
     meaning: "제임스 본드가 나오는 영화들을 좋아한다고 말하는 표현입니다."
+  },
+  {
+    id: "a-the-movie-theater",
+    title: "a/the 설명",
+    ko: "우리 집 근처에 크고 신식인 영화관이 있다. 그 영화관의 이름은 롯데시네마이다.",
+    en: "There is a big and modern movie theater near my home. The name of the theater is Lotte Cinema.",
+    sound: "데어 이즈 어 빅 앤 모던 무비 씨어터 니어 마이 홈. 더 네임 오브 더 씨어터 이즈 롯데 시네마.",
+    meaning: "처음 말하는 영화관은 a movie theater, 다시 말하는 그 영화관은 the theater라고 한다. a는 처음 소개할 때, the는 이미 말한 대상을 다시 가리킬 때 쓴다."
   }
 ];
 
