@@ -119,7 +119,8 @@ const bundles = [
       ["과거경험", "Tell me about the last time you listened to music.", "마지막으로 음악을 들었던 때를 말해주세요."],
       ["비교", "Compare watching movies at home and at a theater.", "집에서 영화 보기와 영화관에서 보기 비교해주세요."],
       ["의견", "Why do you like listening to music?", "왜 음악 감상을 좋아하나요?"],
-      ["돌발", "Tell me about a problem you had while watching a movie.", "영화를 보다가 겪은 문제를 말해주세요."]
+      ["돌발", "Tell me about a problem you had while watching a movie.", "영화를 보다가 겪은 문제를 말해주세요."],
+      ["추천", "Recommend a song or movie you like.", "좋아하는 노래나 영화를 추천해주세요."]
     ],
     answer: [
       ["Whenever I have free time, I listen to music.", "웬에버 아이 해브 프리 타임, 아이 리슨 투 뮤직."],
@@ -150,7 +151,8 @@ const bundles = [
       ["과거경험", "Tell me about the last time you went to a cafe.", "마지막으로 카페에 갔던 때를 말해주세요."],
       ["비교", "Do you prefer online shopping or shopping at a store?", "온라인 쇼핑과 매장 쇼핑 중 무엇을 선호하나요?"],
       ["의견", "Why do people like cafes?", "사람들은 왜 카페를 좋아하나요?"],
-      ["돌발", "Tell me about a problem you had while shopping.", "쇼핑 중 겪은 문제를 말해주세요."]
+      ["돌발", "Tell me about a problem you had while shopping.", "쇼핑 중 겪은 문제를 말해주세요."],
+      ["추천", "Recommend a cafe or store you like.", "좋아하는 카페나 가게를 추천해주세요."]
     ],
     answer: [
       ["Whenever I have free time, I go to a cafe near my home.", "웬에버 아이 해브 프리 타임, 아이 고 투 어 카페 니어 마이 홈."],
@@ -182,7 +184,8 @@ const bundles = [
       ["과거경험", "Tell me about a memorable trip.", "기억에 남는 여행을 말해주세요."],
       ["비교", "Compare traveling now and in the past.", "현재와 과거의 여행을 비교해주세요."],
       ["의견", "Why do people like traveling?", "사람들은 왜 여행을 좋아하나요?"],
-      ["돌발", "Have you ever had a problem while traveling?", "여행 중 문제가 있었던 적이 있나요?"]
+      ["돌발", "Have you ever had a problem while traveling?", "여행 중 문제가 있었던 적이 있나요?"],
+      ["추천", "Recommend a place to visit in your country.", "한국에서 방문할 만한 장소를 추천해주세요."]
     ],
     answer: [
       ["Whenever I have free time, I like traveling.", "웬에버 아이 해브 프리 타임, 아이 라이크 트래블링."],
@@ -217,7 +220,7 @@ const bundles = [
       ["롤플레이 질문", "Call a restaurant and ask about opening hours.", "식당에 전화해서 영업시간을 물어보세요."],
       ["롤플레이 문제", "You cannot go to an appointment. Explain and change the time.", "약속에 갈 수 없습니다. 설명하고 시간을 바꾸세요."],
       ["롤플레이 문제", "You lost something at a cafe. Call and ask for help.", "카페에서 물건을 잃어버렸습니다. 전화해서 도움을 요청하세요."],
-      ["위기탈출", "You do not know this topic well. Try to answer.", "잘 모르는 주제입니다. 답변을 시도하세요."]
+      ["돌발 문제", "Tell me about a time when you needed help from staff.", "직원의 도움이 필요했던 때를 말해주세요."]
     ],
     answer: [
       ["There is a small place near my home.", "데어 이즈 어 스몰 플레이스 니어 마이 홈."],
@@ -240,11 +243,16 @@ const bundles = [
     surveyItems: ["질문 못 들었을 때", "질문을 이해 못 했을 때", "답변이 기억 안 날 때"],
     goal: "침묵을 피하고, 짧게 시간을 벌고, 아는 쉬운 경험으로 연결한다.",
     questions: [
-      ["질문 재확인", "You did not hear the question clearly. What would you say?", "질문을 잘 못 들었습니다. 어떻게 말할까요?"],
-      ["이해 부족", "You do not understand the topic. Try to answer.", "주제를 이해하지 못했습니다. 답변을 시도하세요."],
-      ["기억 안 남", "You cannot think of a good answer. Keep talking.", "좋은 답변이 생각나지 않습니다. 계속 말해보세요."],
-      ["어려운 주제", "The topic is too difficult. Move to your experience.", "주제가 너무 어렵습니다. 내 경험으로 연결하세요."],
-      ["시간 벌기", "You need a few seconds to think. What would you say?", "생각할 시간이 조금 필요합니다. 어떻게 말할까요?"]
+      ["어려운 주제", "Tell me about a traditional holiday in your country.", "한국의 전통 명절에 대해 말해주세요."],
+      ["어려운 주제", "Describe a public transportation system in your city.", "도시의 대중교통 시스템을 묘사해주세요."],
+      ["어려운 주제", "Tell me about a famous building or landmark in your area.", "지역의 유명한 건물이나 랜드마크를 말해주세요."],
+      ["어려운 주제", "What do people usually do when they have a problem with their phone?", "휴대폰 문제가 생기면 사람들이 보통 무엇을 하나요?"],
+      ["어려운 주제", "Tell me about a time when you had to change your plan.", "계획을 바꿔야 했던 때를 말해주세요."],
+      ["어려운 주제", "Describe a place that was difficult for you to find.", "찾기 어려웠던 장소를 묘사해주세요."],
+      ["어려운 주제", "Tell me about a time when you were confused.", "혼란스러웠던 경험을 말해주세요."],
+      ["어려운 주제", "What do you usually do when you need help?", "도움이 필요할 때 보통 무엇을 하나요?"],
+      ["어려운 주제", "Tell me about a time when you solved a small problem.", "작은 문제를 해결했던 때를 말해주세요."],
+      ["어려운 주제", "Describe something you do not know very well, but try to explain it.", "잘 알지는 못하지만 설명을 시도할 수 있는 것을 묘사해주세요."]
     ],
     answer: [
       ["I didn't think of that question.", "아이 디든트 씽크 오브 댓 퀘스천."],
@@ -347,6 +355,17 @@ function createAnswerToolbar(bundle) {
   const toolbar = el("div", "answer-toolbar");
   toolbar.append(createFullAnswerTtsButton(bundle));
   return toolbar;
+}
+
+function createQuestionTtsButton(questions) {
+  const button = el("button", "question-tts-button", "▶ 질문 전체 재생");
+  button.type = "button";
+  button.setAttribute("aria-label", "질문 전체 재생");
+  button.title = "질문 전체 재생";
+  button.addEventListener("click", () => {
+    speakText(questions.map(([, question]) => question).join(" "));
+  });
+  return button;
 }
 
 function createLine([english, sound]) {
@@ -489,9 +508,9 @@ function renderScript() {
   bundle.surveyItems.forEach((item) => surveyList.append(el("span", groupInfo[bundle.colorGroup].className, item)));
 
   const questionList = el("div", "question-list");
-  shuffle(bundle.questions)
-    .slice(0, bundle.id === "surprise" ? 3 : 5)
-    .forEach((question) => questionList.append(createQuestionRow(question)));
+  const visibleQuestions = shuffle(bundle.questions).slice(0, 10);
+  questionList.append(createQuestionTtsButton(visibleQuestions));
+  visibleQuestions.forEach((question) => questionList.append(createQuestionRow(question)));
 
   const lines = el("div", "script-lines");
   bundle.answer.forEach((line) => lines.append(createLine(line)));
