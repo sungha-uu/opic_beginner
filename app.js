@@ -39,6 +39,79 @@ const personalNotes = [
 
 const deletedMemoStorageKey = "opicDeletedMemoIds";
 
+const questionSounds = {
+  "Describe a park near your home.": "디스크라이브 어 파크 니어 유어 홈.",
+  "Tell me about a quiet place you like.": "텔 미 어바웃 어 콰이엇 플레이스 유 라이크.",
+  "What do you usually do in your free time?": "왓 두 유 유주얼리 두 인 유어 프리 타임?",
+  "How often do you go to a park?": "하우 오픈 두 유 고 투 어 파크?",
+  "Tell me about your exercise routine.": "텔 미 어바웃 유어 엑서사이즈 루틴.",
+  "Tell me about the last time you went to a park.": "텔 미 어바웃 더 래스트 타임 유 웬트 투 어 파크.",
+  "Tell me about a recent walk or jog.": "텔 미 어바웃 어 리센트 워크 오어 조그.",
+  "Compare your free time now and in the past.": "컴페어 유어 프리 타임 나우 앤 인 더 패스트.",
+  "Why do you like walking in the park?": "와이 두 유 라이크 워킹 인 더 파크?",
+  "Tell me about a problem you had at a park.": "텔 미 어바웃 어 프라블럼 유 해드 앳 어 파크.",
+  "Please describe your home.": "플리즈 디스크라이브 유어 홈.",
+  "Tell me about your favorite place at home.": "텔 미 어바웃 유어 페이버릿 플레이스 앳 홈.",
+  "What do you usually do at home?": "왓 두 유 유주얼리 두 앳 홈?",
+  "What do you usually do during your vacation at home?": "왓 두 유 유주얼리 두 듀링 유어 베케이션 앳 홈?",
+  "How do you spend your evening after work?": "하우 두 유 스펜드 유어 이브닝 애프터 워크?",
+  "Tell me about a memorable experience at home.": "텔 미 어바웃 어 메머러블 익스피리언스 앳 홈.",
+  "Tell me about the last time you rested at home.": "텔 미 어바웃 더 래스트 타임 유 레스티드 앳 홈.",
+  "Compare your home now and your old home.": "컴페어 유어 홈 나우 앤 유어 올드 홈.",
+  "Why do you like staying home?": "와이 두 유 라이크 스테잉 홈?",
+  "Tell me about a problem you had at home.": "텔 미 어바웃 어 프라블럼 유 해드 앳 홈.",
+  "What kind of music do you like?": "왓 카인드 오브 뮤직 두 유 라이크?",
+  "Tell me about a movie theater near your home.": "텔 미 어바웃 어 무비 씨어터 니어 유어 홈.",
+  "When do you usually listen to music?": "웬 두 유 유주얼리 리슨 투 뮤직?",
+  "How often do you watch movies?": "하우 오픈 두 유 워치 무비즈?",
+  "Tell me about a movie you watched recently.": "텔 미 어바웃 어 무비 유 워치트 리센틀리.",
+  "Tell me about the last time you listened to music.": "텔 미 어바웃 더 래스트 타임 유 리슨드 투 뮤직.",
+  "Compare watching movies at home and at a theater.": "컴페어 워칭 무비즈 앳 홈 앤 앳 어 씨어터.",
+  "Why do you like listening to music?": "와이 두 유 라이크 리스닝 투 뮤직?",
+  "Tell me about a problem you had while watching a movie.": "텔 미 어바웃 어 프라블럼 유 해드 와일 워칭 어 무비.",
+  "Recommend a song or movie you like.": "레커멘드 어 송 오어 무비 유 라이크.",
+  "Tell me about a cafe you often go to.": "텔 미 어바웃 어 카페 유 오픈 고 투.",
+  "Describe a shopping place near your home.": "디스크라이브 어 쇼핑 플레이스 니어 유어 홈.",
+  "What do you usually order at a cafe?": "왓 두 유 유주얼리 오더 앳 어 카페?",
+  "Where do you usually go shopping?": "웨어 두 유 유주얼리 고 쇼핑?",
+  "Tell me about the last time you went shopping.": "텔 미 어바웃 더 래스트 타임 유 웬트 쇼핑.",
+  "Tell me about the last time you went to a cafe.": "텔 미 어바웃 더 래스트 타임 유 웬트 투 어 카페.",
+  "Do you prefer online shopping or shopping at a store?": "두 유 프리퍼 온라인 쇼핑 오어 쇼핑 앳 어 스토어?",
+  "Why do people like cafes?": "와이 두 피플 라이크 카페즈?",
+  "Tell me about a problem you had while shopping.": "텔 미 어바웃 어 프라블럼 유 해드 와일 쇼핑.",
+  "Recommend a cafe or store you like.": "레커멘드 어 카페 오어 스토어 유 라이크.",
+  "Tell me about a place you visited.": "텔 미 어바웃 어 플레이스 유 비지티드.",
+  "Describe a beach you went to.": "디스크라이브 어 비치 유 웬트 투.",
+  "Where do you usually go on vacation?": "웨어 두 유 유주얼리 고 온 베케이션?",
+  "What do you usually do when you travel?": "왓 두 유 유주얼리 두 웬 유 트래블?",
+  "Tell me about a trip you took.": "텔 미 어바웃 어 트립 유 툭.",
+  "Tell me about a memorable trip.": "텔 미 어바웃 어 메머러블 트립.",
+  "Compare traveling now and in the past.": "컴페어 트래블링 나우 앤 인 더 패스트.",
+  "Why do people like traveling?": "와이 두 피플 라이크 트래블링?",
+  "Have you ever had a problem while traveling?": "해브 유 에버 해드 어 프라블럼 와일 트래블링?",
+  "Recommend a place to visit in your country.": "레커멘드 어 플레이스 투 비짓 인 유어 컨트리.",
+  "Tell me about a bank near your home.": "텔 미 어바웃 어 뱅크 니어 유어 홈.",
+  "Describe a hospital or pharmacy you know.": "디스크라이브 어 하스피털 오어 파머시 유 노우.",
+  "How do people usually use their phones these days?": "하우 두 피플 유주얼리 유즈 데어 폰즈 디즈 데이즈?",
+  "Tell me about how you use the internet.": "텔 미 어바웃 하우 유 유즈 디 인터넷.",
+  "Tell me about a time when your phone had a problem.": "텔 미 어바웃 어 타임 웬 유어 폰 해드 어 프라블럼.",
+  "Tell me about a time you were late.": "텔 미 어바웃 어 타임 유 워 레이트.",
+  "Call a restaurant and ask about opening hours.": "콜 어 레스토랑 앤 애스크 어바웃 오프닝 아워즈.",
+  "You cannot go to an appointment. Explain and change the time.": "유 캐낫 고 투 언 어포인트먼트. 익스플레인 앤 체인지 더 타임.",
+  "You lost something at a cafe. Call and ask for help.": "유 로스트 섬띵 앳 어 카페. 콜 앤 애스크 포 헬프.",
+  "Tell me about a time when you needed help from staff.": "텔 미 어바웃 어 타임 웬 유 니디드 헬프 프롬 스태프.",
+  "Tell me about a traditional holiday in your country.": "텔 미 어바웃 어 트래디셔널 할러데이 인 유어 컨트리.",
+  "Describe a public transportation system in your city.": "디스크라이브 어 퍼블릭 트랜스포테이션 시스템 인 유어 시티.",
+  "Tell me about a famous building or landmark in your area.": "텔 미 어바웃 어 페이머스 빌딩 오어 랜드마크 인 유어 에어리어.",
+  "What do people usually do when they have a problem with their phone?": "왓 두 피플 유주얼리 두 웬 데이 해브 어 프라블럼 위드 데어 폰?",
+  "Tell me about a time when you had to change your plan.": "텔 미 어바웃 어 타임 웬 유 해드 투 체인지 유어 플랜.",
+  "Describe a place that was difficult for you to find.": "디스크라이브 어 플레이스 댓 워즈 디피컬트 포 유 투 파인드.",
+  "Tell me about a time when you were confused.": "텔 미 어바웃 어 타임 웬 유 워 컨퓨즈드.",
+  "What do you usually do when you need help?": "왓 두 유 유주얼리 두 웬 유 니드 헬프?",
+  "Tell me about a time when you solved a small problem.": "텔 미 어바웃 어 타임 웬 유 솔브드 어 스몰 프라블럼.",
+  "Describe something you do not know very well, but try to explain it.": "디스크라이브 섬띵 유 두 낫 노우 베리 웰, 벗 트라이 투 익스플레인 잇."
+};
+
 const bundles = [
   {
     id: "park",
@@ -439,8 +512,22 @@ function createMemoLine(note) {
 function createQuestionRow([pattern, question, ko]) {
   const row = el("p", "mini-question");
   const questionTop = el("div", "question-top");
-  questionTop.append(el("strong", null, question), createTtsButton(question, "영어 질문 듣기"));
-  row.append(el("em", null, pattern), questionTop, el("span", null, ko));
+  const questionText = el("strong", "question-english", question);
+  questionText.tabIndex = 0;
+  questionText.setAttribute("role", "button");
+  questionText.setAttribute("aria-expanded", "false");
+  questionText.addEventListener("click", () => {
+    const isOpen = row.classList.toggle("show-question-sound");
+    questionText.setAttribute("aria-expanded", String(isOpen));
+  });
+  questionText.addEventListener("keydown", (event) => {
+    if (event.key !== "Enter" && event.key !== " ") return;
+    event.preventDefault();
+    questionText.click();
+  });
+
+  questionTop.append(questionText, createTtsButton(question, "영어 질문 듣기"));
+  row.append(el("em", null, pattern), questionTop, el("span", "question-pronunciation", questionSounds[question] || ""), el("span", null, ko));
   return row;
 }
 

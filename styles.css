@@ -695,9 +695,43 @@ button {
   font-size: 15px;
 }
 
+.question-english {
+  cursor: pointer;
+}
+
+.question-english:focus {
+  border-radius: 4px;
+  outline: 2px solid var(--blue-soft);
+  outline-offset: 2px;
+}
+
 .mini-question span {
   color: var(--muted);
   font-size: 13px;
+}
+
+.mini-question .question-pronunciation {
+  color: var(--coral);
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.45;
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  pointer-events: none;
+  transform: translateY(-2px);
+  transition:
+    max-height 120ms ease,
+    opacity 120ms ease,
+    transform 120ms ease,
+    margin-top 120ms ease;
+}
+
+.mini-question.show-question-sound .question-pronunciation {
+  margin-top: 3px;
+  max-height: 42px;
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .question-top,
