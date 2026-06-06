@@ -35,6 +35,30 @@ const personalNotes = [
     en: "Let's go over there.",
     sound: "렛츠 고 오버 데어.",
     meaning: "상대에게 저쪽 방향이나 장소로 같이 가자고 제안하는 표현입니다."
+  },
+  {
+    id: "tv-broke-movie",
+    title: "영화 문제",
+    ko: "한 번은 TV가 고장 나서 영화를 보지 못했다.",
+    en: "One time, my TV did not work, so I could not watch the movie.",
+    sound: "원 타임, 마이 티비 디드 낫 워크, 쏘 아이 쿠드 낫 워치 더 무비.",
+    meaning: "TV가 고장 나서 영화를 보지 못했던 작은 문제를 설명하는 표현입니다."
+  },
+  {
+    id: "lotte-cinema-near-home",
+    title: "영화관 묘사",
+    ko: "우리 집 근처에는 롯데시네마라는 영화관이 있다. 거기는 매우 크고 신식이다.",
+    en: "There is a movie theater called Lotte Cinema near my home. It is very big and modern.",
+    sound: "데어 이즈 어 무비 씨어터 콜드 롯데 시네마 니어 마이 홈. 잇 이즈 베리 빅 앤 모던.",
+    meaning: "집 근처 영화관을 묘사할 때 쓸 수 있는 표현입니다."
+  },
+  {
+    id: "james-bond-movies",
+    title: "영화 취향",
+    ko: "나는 제임스 본드가 나오는 영화를 다 좋아한다.",
+    en: "I like all movies with James Bond.",
+    sound: "아이 라이크 올 무비즈 위드 제임스 본드.",
+    meaning: "제임스 본드가 나오는 영화들을 좋아한다고 말하는 표현입니다."
   }
 ];
 
