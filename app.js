@@ -364,14 +364,22 @@ function createLine([english, sound]) {
 
 function createMemoLine(note) {
   const row = el("div", "script-line memo-line");
-  row.tabIndex = 0;
-  row.addEventListener("touchstart", () => row.classList.add("show-sound"), { passive: true });
-  row.addEventListener("touchend", () => row.classList.remove("show-sound"));
-  row.addEventListener("touchcancel", () => row.classList.remove("show-sound"));
-  row.addEventListener("mouseleave", () => row.classList.remove("show-sound"));
 
   const top = el("div", "line-top");
-  top.append(el("strong", null, note.en), createTtsButton(note.en, "영어 메모 듣기"));
+  const english = el("strong", "memo-english", note.en);
+  english.tabIndex = 0;
+  english.setAttribute("role", "button");
+  english.setAttribute("aria-expanded", "false");
+  english.addEventListener("click", () => {
+    const isOpen = row.classList.toggle("show-sound");
+    english.setAttribute("aria-expanded", String(isOpen));
+  });
+  english.addEventListener("keydown", (event) => {
+    if (event.key !== "Enter" && event.key !== " ") return;
+    event.preventDefault();
+    english.click();
+  });
+  top.append(english, createTtsButton(note.en, "영어 메모 듣기"));
 
   const detail = el("div", "memo-detail");
   detail.append(el("span", "pronunciation", note.sound), el("p", "memo-translation", note.ko));
