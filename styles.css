@@ -636,13 +636,13 @@ button {
 }
 
 .full-tts-button {
-  min-height: 30px;
+  min-height: 42px;
   border: 1px solid var(--blue);
-  border-radius: 999px;
+  border-radius: 8px;
   background: var(--blue);
   color: #ffffff;
-  padding: 0 11px;
-  font-size: 12px;
+  padding: 0 14px;
+  font-size: 14px;
   font-weight: 900;
   white-space: nowrap;
 }
@@ -656,7 +656,7 @@ button {
   align-items: center;
   flex-wrap: wrap;
   gap: 10px;
-  margin: 10px 0 2px;
+  margin: 10px 0 8px;
   border-top: 1px solid var(--line);
   padding-top: 14px;
 }
@@ -676,6 +676,15 @@ button {
 
 #resultFullTts {
   margin: 8px 0 12px;
+}
+
+.answer-toolbar {
+  display: flex;
+  margin: 0 0 12px;
+}
+
+.answer-toolbar .full-tts-button {
+  width: 100%;
 }
 
 .script-lines {

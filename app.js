@@ -293,7 +293,7 @@ function getFullAnswerText(bundle) {
 }
 
 function createFullAnswerTtsButton(bundle) {
-  const button = el("button", "full-tts-button", "전체 듣기");
+  const button = el("button", "full-tts-button", "▶ 전체 재생");
   button.type = "button";
   button.setAttribute("aria-label", `답변 패턴 #${bundle.patternNo} 전체 듣기`);
   button.title = "답변 전체 듣기";
@@ -302,6 +302,12 @@ function createFullAnswerTtsButton(bundle) {
     speakText(getFullAnswerText(bundle));
   });
   return button;
+}
+
+function createAnswerToolbar(bundle) {
+  const toolbar = el("div", "answer-toolbar");
+  toolbar.append(createFullAnswerTtsButton(bundle));
+  return toolbar;
 }
 
 function createLine([english, sound]) {
@@ -327,7 +333,7 @@ function createQuestionRow([pattern, question, ko]) {
 
 function createPatternTitle(bundle) {
   const title = el("div", "pattern-title");
-  title.append(el("span", null, `답변 패턴 #${bundle.patternNo}`), el("strong", null, bundle.label), createFullAnswerTtsButton(bundle));
+  title.append(el("span", null, `답변 패턴 #${bundle.patternNo}`), el("strong", null, bundle.label));
   return title;
 }
 
@@ -398,7 +404,7 @@ function renderScript() {
 
   const lines = el("div", "script-lines");
   bundle.answer.forEach((line) => lines.append(createLine(line)));
-  card.append(surveyList, questionList, createPatternTitle(bundle), lines);
+  card.append(surveyList, questionList, createPatternTitle(bundle), createAnswerToolbar(bundle), lines);
   wrap.append(card);
 }
 
@@ -412,7 +418,7 @@ function renderAllPatterns() {
 
     const lines = el("div", "script-lines");
     bundle.answer.forEach((line) => lines.append(createLine(line)));
-    card.append(lines);
+    card.append(createAnswerToolbar(bundle), lines);
     wrap.append(card);
   });
 }
