@@ -318,8 +318,18 @@ button {
   font-weight: 800;
 }
 
-.memo-meaning {
+.memo-translation {
   margin: 6px 0 0;
+  border-radius: 8px;
+  background: #fff0eb;
+  padding: 9px 11px;
+  color: var(--coral);
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.memo-meaning {
+  margin: 12px 0 0;
   border-radius: 8px;
   background: var(--paper);
   padding: 10px 12px;
@@ -389,19 +399,20 @@ button {
 }
 
 .memo-card .pattern-title {
+  justify-content: space-between;
   margin-top: 0;
   border-top: 0;
   padding-top: 0;
 }
 
 .memo-delete-button {
-  width: 100%;
-  min-height: 36px;
-  margin: 0 0 14px;
+  min-height: 30px;
+  margin-left: auto;
   border: 1px solid #ffd6cc;
-  border-radius: 8px;
+  border-radius: 999px;
   background: #fff0eb;
   color: var(--coral);
+  padding: 0 12px;
   font-size: 13px;
   font-weight: 900;
 }
@@ -808,6 +819,13 @@ button {
 }
 
 .memo-line .memo-detail span {
+  max-height: none;
+  opacity: 1;
+  overflow: visible;
+  transform: none;
+}
+
+.memo-line .memo-detail .memo-translation {
   max-height: none;
   opacity: 1;
   overflow: visible;

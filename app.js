@@ -374,7 +374,7 @@ function createMemoLine(note) {
   top.append(el("strong", null, note.en), createTtsButton(note.en, "영어 메모 듣기"));
 
   const detail = el("div", "memo-detail");
-  detail.append(el("span", "pronunciation", note.sound), el("p", "memo-meaning", note.meaning));
+  detail.append(el("span", "pronunciation", note.sound), el("p", "memo-translation", note.ko));
 
   row.append(top, detail);
   return row;
@@ -390,17 +390,19 @@ function createQuestionRow([pattern, question, ko]) {
 
 function createMemoCard(note, index) {
   const card = el("article", "script-item memo-card");
+  const title = el("div", "pattern-title memo-title");
 
   const deleteButton = el("button", "memo-delete-button", "삭제");
   deleteButton.type = "button";
   deleteButton.setAttribute("aria-label", `${note.title || "개인 문장"} 메모 삭제`);
   deleteButton.addEventListener("click", () => deleteMemoNote(note.id));
+  title.append(el("span", null, `메모 #${index + 1}`), deleteButton);
 
-  const source = el("p", "memo-source", note.ko);
   const lines = el("div", "script-lines");
   lines.append(createMemoLine(note));
+  const meaning = el("p", "memo-meaning", note.meaning);
 
-  card.append(deleteButton, source, lines);
+  card.append(title, lines, meaning);
   return card;
 }
 
