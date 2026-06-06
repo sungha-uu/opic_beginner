@@ -20,6 +20,8 @@
   --cafe-ink: #d95f43;
   --game-bg: #f0eaff;
   --game-ink: #6f52c7;
+  --movie-bg: #fff5d6;
+  --movie-ink: #a97814;
   --travel-bg: #e5f6ff;
   --travel-ink: #227ca3;
   --tech-bg: #fff5d6;
@@ -615,6 +617,11 @@ button {
 .group-game {
   background: var(--game-bg);
   color: var(--game-ink);
+}
+
+.group-movie {
+  background: var(--movie-bg);
+  color: var(--movie-ink);
 }
 
 .group-travel {
