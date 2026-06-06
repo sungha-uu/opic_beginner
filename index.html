@@ -22,6 +22,7 @@
           <a href="#scripts" class="nav-link">맞춤 스크립트</a>
           <a href="#practice" class="nav-link">60초 연습</a>
           <a href="#tips" class="nav-link">Tip</a>
+          <a href="#all-patterns" class="nav-link">모든 패턴</a>
         </nav>
 
         <div class="sidebar-note">
@@ -132,6 +133,28 @@
                 <div><strong>공통 답변</strong><span>같은 표현을 조금씩 바꿔 여러 질문에 사용</span></div>
               </div>
             </article>
+          </div>
+        </section>
+
+        <section id="all-patterns" class="section-band all-patterns-section">
+          <div class="section-title">
+            <div>
+              <p class="eyebrow">All Answer Patterns</p>
+              <h2>모든 답변 패턴</h2>
+            </div>
+            <button
+              class="secondary-button"
+              id="toggleAllPatterns"
+              type="button"
+              aria-expanded="false"
+              aria-controls="allPatternsPanel"
+            >
+              모든 답변 패턴 보기
+            </button>
+          </div>
+
+          <div class="all-patterns-panel hidden" id="allPatternsPanel">
+            <div class="script-board all-patterns-board" id="allPatternsBoard"></div>
           </div>
         </section>
       </main>

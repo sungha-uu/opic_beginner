@@ -331,6 +331,24 @@ button {
   grid-template-columns: minmax(0, 1fr);
 }
 
+.all-patterns-section {
+  padding-bottom: 24px;
+}
+
+.all-patterns-panel {
+  margin-top: 8px;
+}
+
+.all-patterns-board {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.all-pattern-card .pattern-title {
+  margin-top: 0;
+  border-top: 0;
+  padding-top: 0;
+}
+
 .script-item h3 {
   font-size: 22px;
 }

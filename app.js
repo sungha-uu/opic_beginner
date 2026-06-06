@@ -15,7 +15,7 @@ const baseAnswer = [
   ["It is small, quiet, and clean.", "잇 이즈 스몰, 콰이엇, 앤 클린."],
   ["Sometimes I listen to music there.", "섬타임즈 아이 리슨 투 뮤직 데어."],
   ["I like it because it is comfortable.", "아이 라이크 잇 비커즈 잇 이즈 컴퍼터블."],
-  ["It helps me relax.", "잇 헬프스 미 릴랙스."]
+  ["It makes me feel good and relaxed.", "잇 메익스 미 필 굿 앤 릴랙스트."]
 ];
 
 const bundles = [
@@ -79,7 +79,7 @@ const bundles = [
       ["But it was okay.", "벗 잇 워즈 오케이."],
       ["My home is small, quiet, and comfortable.", "마이 홈 이즈 스몰, 콰이엇, 앤 컴퍼터블."],
       ["I like it because it is comfortable.", "아이 라이크 잇 비커즈 잇 이즈 컴퍼터블."],
-      ["It helps me relax.", "잇 헬프스 미 릴랙스."]
+      ["It makes me feel good and relaxed.", "잇 메익스 미 필 굿 앤 릴랙스트."]
     ]
   },
   {
@@ -110,7 +110,7 @@ const bundles = [
       ["But it was okay.", "벗 잇 워즈 오케이."],
       ["The place is small, quiet, and clean.", "더 플레이스 이즈 스몰, 콰이엇, 앤 클린."],
       ["I like it because it is fun.", "아이 라이크 잇 비커즈 잇 이즈 펀."],
-      ["It helps me relax.", "잇 헬프스 미 릴랙스."]
+      ["It makes me feel good and relaxed.", "잇 메익스 미 필 굿 앤 릴랙스트."]
     ]
   },
   {
@@ -227,14 +227,16 @@ const bundles = [
       ["시간 벌기", "You need a few seconds to think. What would you say?", "생각할 시간이 조금 필요합니다. 어떻게 말할까요?"]
     ],
     answer: [
-      ["I am sorry, I did not hear the question clearly.", "아이 앰 쏘리, 아이 디드 낫 히어 더 퀘스천 클리얼리."],
-      ["Could you repeat that, please?", "쿠드 유 리핏 댓, 플리즈?"],
+      ["I didn't think of that question.", "아이 디든트 씽크 오브 댓 퀘스천."],
+      ["Why didn't I think of that? Wow!", "와이 디든트 아이 씽크 오브 댓? 와우!"],
+      ["That is a very interesting question.", "댓 이즈 어 베리 인터레스팅 퀘스천."],
+      ["I need a moment to think. Hmm.", "아이 니드 어 모먼트 투 씽크. 흠."],
       ["That is a little difficult for me.", "댓 이즈 어 리틀 디피컬트 포 미."],
       ["I am not sure, but I will try.", "아이 앰 낫 슈어, 벗 아이 윌 트라이."],
       ["I do not know much about it.", "아이 두 낫 노우 머치 어바웃 잇."],
       ["But I can talk about my experience.", "벗 아이 캔 토크 어바웃 마이 익스피리언스."],
       ["For example, I usually go to a park after work.", "포 이그잼플, 아이 유주얼리 고 투 어 파크 애프터 워크."],
-      ["It helps me relax.", "잇 헬프스 미 릴랙스."]
+      ["It makes me feel good.", "잇 메익스 미 필 굿."]
     ]
   }
 ];
@@ -384,6 +386,21 @@ function renderScript() {
   wrap.append(card);
 }
 
+function renderAllPatterns() {
+  const wrap = document.querySelector("#allPatternsBoard");
+  wrap.innerHTML = "";
+
+  bundles.forEach((bundle) => {
+    const card = el("article", "script-item all-pattern-card");
+    card.append(createPatternTitle(bundle));
+
+    const lines = el("div", "script-lines");
+    bundle.answer.forEach((line) => lines.append(createLine(line)));
+    card.append(lines);
+    wrap.append(card);
+  });
+}
+
 function handlePracticeButton() {
   if (isPracticing) {
     finishPractice();
@@ -456,10 +473,22 @@ function bindNav() {
   });
 }
 
+function bindAllPatternsToggle() {
+  const button = document.querySelector("#toggleAllPatterns");
+  const panel = document.querySelector("#allPatternsPanel");
+
+  button.addEventListener("click", () => {
+    const isHidden = panel.classList.toggle("hidden");
+    button.setAttribute("aria-expanded", String(!isHidden));
+    button.textContent = isHidden ? "모든 답변 패턴 보기" : "모든 답변 패턴 숨기기";
+  });
+}
+
 function renderAll() {
   renderSurvey();
   renderBundles();
   renderScript();
+  renderAllPatterns();
 }
 
 document.querySelector("#practiceButton").addEventListener("click", handlePracticeButton);
@@ -469,3 +498,4 @@ renderLegend();
 renderAll();
 updateTimer();
 bindNav();
+bindAllPatternsToggle();
