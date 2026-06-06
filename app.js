@@ -18,7 +18,22 @@ const baseAnswer = [
   ["It makes me feel good and relaxed.", "잇 메익스 미 필 굿 앤 릴랙스트."]
 ];
 
-const personalNotes = [];
+const personalNotes = [
+  {
+    title: "위험 경고",
+    ko: "위험해, 거기서 내려와.",
+    en: "It's dangerous. Come down from there.",
+    sound: "잇츠 데인저러스. 컴 다운 프롬 데어.",
+    meaning: "위험한 상황에서 상대에게 그 장소에서 내려오라고 말하는 표현입니다."
+  },
+  {
+    title: "이동 제안",
+    ko: "저쪽으로 가자.",
+    en: "Let's go over there.",
+    sound: "렛츠 고 오버 데어.",
+    meaning: "상대에게 저쪽 방향이나 장소로 같이 가자고 제안하는 표현입니다."
+  }
+];
 
 const bundles = [
   {
