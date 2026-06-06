@@ -362,6 +362,24 @@ function createLine([english, sound]) {
   return row;
 }
 
+function createMemoLine(note) {
+  const row = el("div", "script-line memo-line");
+  row.tabIndex = 0;
+  row.addEventListener("touchstart", () => row.classList.add("show-sound"), { passive: true });
+  row.addEventListener("touchend", () => row.classList.remove("show-sound"));
+  row.addEventListener("touchcancel", () => row.classList.remove("show-sound"));
+  row.addEventListener("mouseleave", () => row.classList.remove("show-sound"));
+
+  const top = el("div", "line-top");
+  top.append(el("strong", null, note.en), createTtsButton(note.en, "영어 메모 듣기"));
+
+  const detail = el("div", "memo-detail");
+  detail.append(el("span", "pronunciation", note.sound), el("p", "memo-meaning", note.meaning));
+
+  row.append(top, detail);
+  return row;
+}
+
 function createQuestionRow([pattern, question, ko]) {
   const row = el("p", "mini-question");
   const questionTop = el("div", "question-top");
@@ -372,8 +390,6 @@ function createQuestionRow([pattern, question, ko]) {
 
 function createMemoCard(note, index) {
   const card = el("article", "script-item memo-card");
-  const title = el("div", "pattern-title memo-title");
-  title.append(el("span", null, `메모 #${index + 1}`), el("strong", null, note.title || "개인 문장"));
 
   const deleteButton = el("button", "memo-delete-button", "삭제");
   deleteButton.type = "button";
@@ -382,10 +398,9 @@ function createMemoCard(note, index) {
 
   const source = el("p", "memo-source", note.ko);
   const lines = el("div", "script-lines");
-  lines.append(createLine([note.en, note.sound]));
+  lines.append(createMemoLine(note));
 
-  const meaning = el("p", "memo-meaning", note.meaning);
-  card.append(title, deleteButton, source, lines, meaning);
+  card.append(deleteButton, source, lines);
   return card;
 }
 

@@ -319,7 +319,7 @@ button {
 }
 
 .memo-meaning {
-  margin: 12px 0 0;
+  margin: 6px 0 0;
   border-radius: 8px;
   background: var(--paper);
   padding: 10px 12px;
@@ -397,7 +397,7 @@ button {
 .memo-delete-button {
   width: 100%;
   min-height: 36px;
-  margin: 0 0 12px;
+  margin: 0 0 14px;
   border: 1px solid #ffd6cc;
   border-radius: 8px;
   background: #fff0eb;
@@ -409,6 +409,19 @@ button {
 .memo-delete-button:hover {
   border-color: var(--coral);
   background: #ffe3db;
+}
+
+.memo-detail {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  pointer-events: none;
+  transform: translateY(-2px);
+  transition:
+    max-height 120ms ease,
+    opacity 120ms ease,
+    transform 120ms ease,
+    margin-top 120ms ease;
 }
 
 .script-item h3 {
@@ -790,6 +803,24 @@ button {
 .script-line.show-sound span {
   margin-top: 3px;
   max-height: 42px;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.memo-line .memo-detail span {
+  max-height: none;
+  opacity: 1;
+  overflow: visible;
+  transform: none;
+}
+
+.memo-line:hover .memo-detail,
+.memo-line:active .memo-detail,
+.memo-line:focus .memo-detail,
+.memo-line:focus-within .memo-detail,
+.memo-line.show-sound .memo-detail {
+  margin-top: 3px;
+  max-height: 160px;
   opacity: 1;
   transform: translateY(0);
 }
