@@ -400,7 +400,6 @@ button {
 }
 
 .memo-card .pattern-title {
-  justify-content: space-between;
   margin-top: 0;
   border-top: 0;
   padding-top: 0;
@@ -408,7 +407,6 @@ button {
 
 .memo-delete-button {
   min-height: 30px;
-  margin-left: auto;
   border: 1px solid #ffd6cc;
   border-radius: 999px;
   background: #fff0eb;
