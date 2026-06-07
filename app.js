@@ -77,12 +77,12 @@ const personalNotes = [
     meaning: "쇼핑몰에서 돈을 잃어버렸지만 침착하게 행동하고 집에 돌아왔다는 과거 경험 표현입니다."
   },
   {
-    id: "met-friend-at-mall",
+    id: "met-old-friend-at-mall",
     title: "쇼핑몰 경험",
-    ko: "나는 쇼핑몰에서 우연히 친구를 만난 적이 있다. 그때 정말 반가웠었다.",
-    en: "One time, I met my friend by chance at a shopping mall. I was really happy to see my friend.",
-    sound: "원 타임, 아이 멧 마이 프렌드 바이 챈스 앳 어 쇼핑 몰. 아이 워즈 리얼리 해피 투 씨 마이 프렌드.",
-    meaning: "쇼핑몰에서 친구를 우연히 만나서 반가웠던 경험을 말하는 표현입니다."
+    ko: "나는 쇼핑몰에서 오랜만에 친구를 만난 적이 있다. 그때 정말 반가웠었다.",
+    en: "One time, I met an old friend at a shopping mall. I was really happy to see my friend.",
+    sound: "원 타임, 아이 멧 언 올드 프렌드 앳 어 쇼핑 몰. 아이 워즈 리얼리 해피 투 씨 마이 프렌드.",
+    meaning: "쇼핑몰에서 오랜만에 친구를 만나서 반가웠던 경험을 말하는 표현입니다."
   }
 ];
 
@@ -325,6 +325,8 @@ const bundles = [
       ["Going to a cafe is one of my hobbies.", "고잉 투 어 카페 이즈 원 어브 마이 하비즈."],
       ["One time, I lost my phone there.", "원 타임, 아이 로스트 마이 폰 데어."],
       ["But I found it later.", "벗 아이 파운드 잇 레이터."],
+      ["One time, I met an old friend at a shopping mall.", "원 타임, 아이 멧 언 올드 프렌드 앳 어 쇼핑 몰."],
+      ["I was really happy to see my friend.", "아이 워즈 리얼리 해피 투 씨 마이 프렌드."],
       ["It is small, quiet, and clean.", "잇 이즈 스몰, 콰이엇, 앤 클린."],
       ["Sometimes I go shopping near the cafe.", "섬타임즈 아이 고 쇼핑 니어 더 카페."],
       ["I like it because it is comfortable.", "아이 라이크 잇 비커즈 잇 이즈 컴퍼터블."],
@@ -466,6 +468,8 @@ function saveDeletedMemoIds(ids) {
 }
 
 function deleteMemoNote(id) {
+  const shouldDelete = window.confirm("이 메모를 삭제할까요?");
+  if (!shouldDelete) return;
   const deletedIds = getDeletedMemoIds();
   deletedIds.add(id);
   saveDeletedMemoIds(deletedIds);
