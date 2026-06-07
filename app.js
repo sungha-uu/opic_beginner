@@ -67,6 +67,22 @@ const personalNotes = [
     en: "There is a big and modern movie theater near my home. The name of the theater is Lotte Cinema.",
     sound: "데어 이즈 어 빅 앤 모던 무비 씨어터 니어 마이 홈. 더 네임 오브 더 씨어터 이즈 롯데 시네마.",
     meaning: "처음 말하는 영화관은 a movie theater, 다시 말하는 그 영화관은 the theater라고 한다. a는 처음 소개할 때, the는 이미 말한 대상을 다시 가리킬 때 쓴다."
+  },
+  {
+    id: "lost-money-at-mall",
+    title: "쇼핑몰 문제",
+    ko: "한 번은 쇼핑몰에서 돈을 잃어버린 적이 있다. 나는 그때 매우 당황했지만 침착하게 행동했고 집에 돌아온 기억이 있다.",
+    en: "One time, I lost my money at a shopping mall. I was very surprised, but I stayed calm and went back home.",
+    sound: "원 타임, 아이 로스트 마이 머니 앳 어 쇼핑 몰. 아이 워즈 베리 서프라이즈드, 벗 아이 스테이드 캄 앤 웬트 백 홈.",
+    meaning: "쇼핑몰에서 돈을 잃어버렸지만 침착하게 행동하고 집에 돌아왔다는 과거 경험 표현입니다."
+  },
+  {
+    id: "met-friend-at-mall",
+    title: "쇼핑몰 경험",
+    ko: "나는 쇼핑몰에서 우연히 친구를 만난 적이 있다. 그때 정말 반가웠었다.",
+    en: "One time, I met my friend by chance at a shopping mall. I was really happy to see my friend.",
+    sound: "원 타임, 아이 멧 마이 프렌드 바이 챈스 앳 어 쇼핑 몰. 아이 워즈 리얼리 해피 투 씨 마이 프렌드.",
+    meaning: "쇼핑몰에서 친구를 우연히 만나서 반가웠던 경험을 말하는 표현입니다."
   }
 ];
 
