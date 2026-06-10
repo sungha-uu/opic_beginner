@@ -83,6 +83,30 @@ const personalNotes = [
     en: "One time, I met an old friend at a shopping mall. I was really happy to see my friend.",
     sound: "원 타임, 아이 멧 언 올드 프렌드 앳 어 쇼핑 몰. 아이 워즈 리얼리 해피 투 씨 마이 프렌드.",
     meaning: "쇼핑몰에서 오랜만에 친구를 만나서 반가웠던 경험을 말하는 표현입니다."
+  },
+  {
+    id: "reason-i-like-walking",
+    title: "이유 설명",
+    ko: "그게 내가 산책을 좋아하는 이유이다.",
+    en: "That is why I like walking.",
+    sound: "댓 이즈 와이 아이 라이크 워킹.",
+    meaning: "어떤 이유를 말한 뒤, 그것 때문에 산책을 좋아한다고 정리하는 표현입니다."
+  },
+  {
+    id: "prefer-iced-americano",
+    title: "음료 취향",
+    ko: "라떼보다는 아이스 아메리카노를 더 좋아한다.",
+    en: "I like iced Americano more than latte.",
+    sound: "아이 라이크 아이스트 아메리카노 모어 댄 라테.",
+    meaning: "두 음료를 비교하면서 아이스 아메리카노를 더 좋아한다고 말하는 표현입니다."
+  },
+  {
+    id: "apartment-rooms",
+    title: "집 구조",
+    ko: "우리 집은 아파트이고 방 2개, 화장실 1개, 거실 1개이다.",
+    en: "My home is an apartment. It has two bedrooms, one bathroom, and one living room.",
+    sound: "마이 홈 이즈 언 아파트먼트. 잇 해즈 투 베드룸즈, 원 배스룸, 앤 원 리빙 룸.",
+    meaning: "집의 종류와 방, 화장실, 거실 개수를 간단히 설명하는 표현입니다."
   }
 ];
 
