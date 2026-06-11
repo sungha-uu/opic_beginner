@@ -3,186 +3,123 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>OPIC IL Script Trainer</title>
-    <link rel="stylesheet" href="./styles.css?v=20260607-memo-delete-near-tag" />
+    <title>OPIC IL Personal Trainer</title>
+    <link rel="stylesheet" href="./styles.css?v=20260612-p07" />
   </head>
   <body>
     <div class="app-shell">
       <aside class="sidebar" aria-label="주요 메뉴">
         <div class="brand">
           <span class="brand-mark">IL</span>
-          <div>
-            <h1>OPIC Trainer</h1>
-            <p>서베이 묶음별 암기</p>
-          </div>
+          <div><h1>OPIC Trainer</h1><p>내 질문과 내 이야기</p></div>
         </div>
-
         <nav class="nav-list" aria-label="대시보드 섹션">
-          <a href="#survey" class="nav-link active">추천 조합</a>
-          <a href="#scripts" class="nav-link">맞춤 스크립트</a>
+          <a href="#questions" class="nav-link active">질문 패턴</a>
+          <a href="#answers" class="nav-link">답변 패턴</a>
           <a href="#practice" class="nav-link">60초 연습</a>
-          <a href="#tips" class="nav-link">Tip</a>
-          <a href="#all-patterns" class="nav-link">모든 패턴</a>
+          <a href="#fillers" class="nav-link">필러</a>
           <a href="#memo" class="nav-link">메모장</a>
         </nav>
-
-        <div class="sidebar-note">
-          <span>프로젝트 목표</span>
-          <strong>서베이는 전략적으로, 답변은 한 패턴으로</strong>
-        </div>
+        <div class="sidebar-note"><span>학습 원칙</span><strong>기출은 기록하고, 내 이야기는 짧게 반복하기</strong></div>
       </aside>
 
       <main class="main">
-        <section id="survey" class="section-band">
-          <div class="section-title">
-            <div>
-              <p class="eyebrow">Recommended Survey Combos</p>
-              <h2>내가 공부할 서베이 조합</h2>
-            </div>
-          </div>
-
-          <article class="panel survey-guide">
-            <p>체크박스 대신 실제로 외울 조합만 남겼습니다. 각 조합을 누르면 공통 표현으로 돌려쓸 수 있는 예상 질문과 답변 패턴이 열립니다.</p>
-            <div class="legend" id="legend"></div>
-          </article>
-
-          <div class="survey-grid" id="surveyGrid"></div>
+        <section class="hero section-band">
+          <p class="eyebrow">Personal OPIC Library</p>
+          <h2>시험에서 들은 질문과 내가 할 말을 따로 모아요.</h2>
+          <p>기출 질문은 그대로 기록하고, 답변 패턴에는 여러 질문에 다시 쓸 수 있는 개인 경험과 취향을 저장합니다.</p>
+          <div class="summary-grid" id="summaryGrid"></div>
         </section>
 
-        <section id="scripts" class="section-band">
+        <section id="questions" class="section-band">
           <div class="section-title">
-            <div>
-              <p class="eyebrow">Survey Bundle Scripts</p>
-              <h2>조합별 맞춤 스크립트</h2>
+            <div><p class="eyebrow">Question Library</p><h2>질문 패턴 관리</h2></div>
+            <button class="primary-button" type="button" data-toggle-form="questionFormPanel">질문 추가</button>
+          </div>
+          <p class="section-help"><strong>기출 질문</strong>은 실제 시험에서 들은 내용입니다. 그 질문을 바탕으로 연습용 문장을 만들면 <strong>예상 질문</strong>으로 저장하세요.</p>
+
+          <div class="editor-panel hidden" id="questionFormPanel">
+            <form id="questionForm" class="editor-form">
+              <input type="hidden" name="id" />
+              <label>질문 구분<select name="source" required><option value="actual">기출 질문</option><option value="expected">예상 질문</option></select></label>
+              <label>질문 유형<select name="typeId" id="questionTypeInput" required></select></label>
+              <label class="field-wide">기억나는 질문 또는 한국어 설명<textarea name="questionKo" rows="3" required placeholder="예: 최근에 공원에 갔던 경험을 물어봤다."></textarea></label>
+              <label class="field-wide">영어 질문<textarea name="questionEn" rows="2" required placeholder="예: Tell me about the last time you went to a park."></textarea></label>
+              <label class="field-wide">연결할 기출 질문<select name="originQuestionId" id="originQuestionInput"><option value="">직접 만든 예상 질문</option></select></label>
+              <div class="form-actions field-wide"><button class="primary-button" type="submit">저장</button><button class="secondary-button" type="button" data-cancel-form="questionFormPanel">취소</button></div>
+            </form>
+          </div>
+
+          <div class="toolbar" aria-label="질문 필터">
+            <div class="segmented" id="questionSourceFilters">
+              <button type="button" class="segment-button active" data-source-filter="all">전체</button>
+              <button type="button" class="segment-button" data-source-filter="actual">기출 질문</button>
+              <button type="button" class="segment-button" data-source-filter="expected">예상 질문</button>
             </div>
-            <button class="secondary-button" id="reshuffleQuestions" type="button">질문 다시 섞기</button>
+            <select id="questionTypeFilter" aria-label="질문 유형 필터"></select>
           </div>
+          <div class="type-sections" id="questionBoard"></div>
+        </section>
 
-          <div class="bundle-layout">
-            <aside class="panel bundle-list-panel">
-              <h3>추천 묶음</h3>
-              <p class="muted" id="bundleHint">조합을 선택하면 질문이 랜덤으로 바뀝니다.</p>
-              <div class="bundle-list" id="bundleList"></div>
-            </aside>
-
-            <div class="script-board single" id="scriptBoard"></div>
+        <section id="answers" class="section-band">
+          <div class="section-title">
+            <div><p class="eyebrow">Reusable Answer Materials</p><h2>내 답변 패턴</h2></div>
+            <button class="primary-button" type="button" data-toggle-form="answerFormPanel">답변 패턴 추가</button>
           </div>
+          <p class="section-help">질문 유형에 맞춘 모범 답안이 아닙니다. 내 경험, 취향, 루틴, 장소, 사람처럼 여러 답변에 다시 쓸 수 있는 <strong>개인 영어 소재</strong>를 저장합니다.</p>
+          <div class="editor-panel hidden" id="answerFormPanel">
+            <form id="answerForm" class="editor-form">
+              <input type="hidden" name="id" />
+              <label>소재 이름<input name="title" required placeholder="예: 퇴근 후 공원 산책" /></label>
+              <label>소재 종류<select name="category" id="answerCategoryInput" required></select></label>
+              <label class="field-wide">내 이야기 한국어 원문<textarea name="ko" rows="4" required placeholder="편하게 한국어로 적으세요."></textarea></label>
+              <label class="field-wide">말하기 쉬운 영어 정리문<textarea name="en" rows="5" required placeholder="짧은 영어 문장을 줄마다 하나씩 적으세요."></textarea></label>
+              <label class="field-wide">태그<input name="tags" placeholder="공원, 산책, 퇴근 후 (쉼표로 구분)" /></label>
+              <div class="form-actions field-wide"><button class="primary-button" type="submit">저장</button><button class="secondary-button" type="button" data-cancel-form="answerFormPanel">취소</button></div>
+            </form>
+          </div>
+          <div class="library-grid" id="answerBoard"></div>
         </section>
 
         <section id="practice" class="section-band">
-          <div class="topbar">
-            <div>
-              <p class="eyebrow">Random 60 Seconds</p>
-              <h2>질문만 보고 60초 동안 말하기</h2>
-            </div>
+          <div class="section-title">
+            <div><p class="eyebrow">Random 60 Seconds</p><h2>질문만 보고 60초 말하기</h2></div>
             <button class="primary-button large-button" id="practiceButton" type="button">60초 연습</button>
           </div>
-
           <article class="practice-stage">
-            <div class="stage-status">
-              <span id="practiceState">대기</span>
-              <strong id="timer">00:00</strong>
-            </div>
-            <p class="question" id="practiceQuestion">60초 연습을 누르면 5개 추천 조합, 돌발 유형, 위기탈출 중 하나가 실전처럼 랜덤으로 나옵니다.</p>
-            <p class="muted" id="practiceGuide">연습 중에는 질문만 보입니다. 종료하거나 60초가 지나면 유형, 해석, 좋은 답변 예시가 열립니다.</p>
+            <div class="stage-status"><span id="practiceState">대기</span><strong id="timer">00:00</strong></div>
+            <div id="practiceTag"></div>
+            <p class="question" id="practiceQuestion">저장된 기출 질문과 예상 질문 중 하나가 나옵니다.</p>
+            <p class="translation" id="practiceQuestionKo"></p>
           </article>
-
-          <section class="result-panel hidden" id="practiceResult" aria-live="polite">
-            <div class="result-grid">
-              <article class="panel">
-                <p class="eyebrow">Question Pattern</p>
-                <h3 id="resultType"></h3>
-                <p id="resultQuestionKo" class="translation"></p>
-              </article>
-
-              <article class="panel answer-panel">
-                <p class="eyebrow">Good Answer</p>
-                <h3 id="resultAnswerTitle">답변 패턴</h3>
-                <div class="script-lines" id="resultAnswer"></div>
-              </article>
-            </div>
-          </section>
+          <article class="recommendation hidden" id="practiceResult" aria-live="polite"></article>
         </section>
 
-        <section id="tips" class="section-band">
+        <section id="fillers" class="section-band">
           <div class="section-title">
-            <div>
-              <p class="eyebrow">IL Study Tips</p>
-              <h2>Tip</h2>
-            </div>
+            <div><p class="eyebrow">Speaking Fillers</p><h2>필러</h2></div>
+            <button class="primary-button" type="button" data-toggle-form="fillerFormPanel">필러 추가</button>
           </div>
-
-          <div class="tips-layout">
-            <article class="panel">
-              <h3>IL 준비 원칙</h3>
-              <ol class="tip-list">
-                <li>IL 목표는 난이도 3을 우선 선택한다.</li>
-                <li>서베이는 실제 시험에서 12개 이상 고르되, 공부는 쉬운 조합 5개를 중심으로 한다.</li>
-                <li>기본 문장으로 답변하고, 가능하면 `because`로 이유 1개를 붙인다.</li>
-                <li>문법보다 끊기지 않고 끝까지 말하는 흐름을 더 중요하게 연습한다.</li>
-                <li>공원/걷기/음악처럼 같은 경험으로 묶이는 항목을 우선 외운다.</li>
-                <li>돌발과 위기탈출은 침묵을 피하는 용도로 매일 짧게 연습한다.</li>
-              </ol>
-            </article>
-
-            <article class="panel">
-              <h3>서베이와 문제 패턴 구분</h3>
-              <div class="type-table" aria-label="IL 유형 요약">
-                <div><strong>서베이 항목</strong><span>공원, 게임, 여행처럼 질문 소재가 되는 선택지</span></div>
-                <div><strong>서베이 묶음</strong><span>공원 + 걷기 + 음악처럼 한 답변으로 처리할 수 있는 조합</span></div>
-                <div><strong>문제 패턴</strong><span>묘사, 루틴, 과거경험, 비교, 롤플레이처럼 답변 방식</span></div>
-                <div><strong>공통 답변</strong><span>같은 표현을 조금씩 바꿔 여러 질문에 사용</span></div>
-              </div>
-            </article>
+          <p class="section-help">생각할 시간을 벌거나, 예시를 시작하고, 말을 정정하고, 짧게 마무리할 때 쓰는 쉬운 표현입니다.</p>
+          <div class="editor-panel hidden" id="fillerFormPanel">
+            <form id="fillerForm" class="editor-form">
+              <input type="hidden" name="id" />
+              <label>기능<select name="functionId" id="fillerFunctionInput" required></select></label>
+              <label>영어 표현<input name="en" required placeholder="As you know," /></label>
+              <label class="field-wide">한국어 뜻<input name="ko" required placeholder="아시다시피," /></label>
+              <div class="form-actions field-wide"><button class="primary-button" type="submit">저장</button><button class="secondary-button" type="button" data-cancel-form="fillerFormPanel">취소</button></div>
+            </form>
           </div>
+          <div class="type-sections" id="fillerBoard"></div>
         </section>
 
-        <section id="all-patterns" class="section-band all-patterns-section">
-          <div class="section-title">
-            <div>
-              <p class="eyebrow">All Answer Patterns</p>
-              <h2>모든 답변 패턴</h2>
-            </div>
-            <button
-              class="secondary-button"
-              id="toggleAllPatterns"
-              type="button"
-              aria-expanded="false"
-              aria-controls="allPatternsPanel"
-            >
-              모든 답변 패턴 보기
-            </button>
-          </div>
-
-          <div class="all-patterns-panel hidden" id="allPatternsPanel">
-            <div class="script-board all-patterns-board" id="allPatternsBoard"></div>
-          </div>
-        </section>
-
-        <section id="memo" class="section-band memo-section">
-          <div class="section-title">
-            <div>
-              <p class="eyebrow">Personal Notes</p>
-              <h2>메모장</h2>
-            </div>
-            <button
-              class="secondary-button"
-              id="toggleMemo"
-              type="button"
-              aria-expanded="false"
-              aria-controls="memoPanel"
-            >
-              메모장 보기
-            </button>
-          </div>
-
-          <div class="memo-panel hidden" id="memoPanel">
-            <div class="script-board memo-board" id="memoBoard"></div>
-          </div>
+        <section id="memo" class="section-band">
+          <div class="section-title"><div><p class="eyebrow">Personal Notes</p><h2>메모장</h2></div></div>
+          <div class="privacy-note"><strong>추천 답변과 완전히 분리된 참고 메모입니다.</strong><span>메모 내용은 답변 패턴이나 추천 답변을 만드는 근거로 사용하지 않습니다.</span></div>
+          <div class="library-grid" id="memoBoard"></div>
         </section>
       </main>
     </div>
-
-    <script src="./app.js?v=20260610-add-personal-notes"></script>
+    <script src="./app.js?v=20260612-p07"></script>
   </body>
 </html>
